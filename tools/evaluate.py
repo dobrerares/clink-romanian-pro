@@ -91,7 +91,10 @@ def load_english(split):
 def sample(sentences, n, seed, lo=3, hi=25):
     pool = [s for s in sentences if lo <= len(s.split()) <= hi]
     rng = random.Random(seed)
-    return rng.sample(pool, min(n, len(pool)))
+    if n >= len(pool):
+        # small set: a bootstrap resample, so that seeds still give a confidence interval
+        return rng.choices(pool, k=len(pool))
+    return rng.sample(pool, n)
 
 
 # ------------------------------------------------------------------ packs

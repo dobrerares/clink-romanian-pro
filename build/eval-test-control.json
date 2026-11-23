@@ -1,0 +1,126 @@
+{
+ "split": "test",
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "packs": {
+  "published": {
+   "prefix": "/home/rdobre/projects/clink/clink-romanian-language/Lexicons/ro",
+   "words": 41630,
+   "pairs": 87210,
+   "bytes": {
+    "clex": 582640,
+    "cngm": 784902
+   }
+  },
+  "published_trainonly": {
+   "prefix": "/home/rdobre/projects/clink/romanian-pro/work/control/pubtrain",
+   "words": 41630,
+   "pairs": 76088,
+   "bytes": {
+    "clex": 582640,
+    "cngm": 684804
+   }
+  },
+  "pro": {
+   "prefix": "/home/rdobre/projects/clink/romanian-pro/Lexicons/ro",
+   "words": 150000,
+   "pairs": 304288,
+   "bytes": {
+    "clex": 2150727,
+    "cngm": 2738604
+   }
+  }
+ },
+ "sentences_available": {
+  "tatoeba": 4169
+ },
+ "next": {
+  "tatoeba": {
+   "published": {
+    "top3": [
+     0.34724,
+     0.00606
+    ],
+    "top3_fallback": [
+     0.35082,
+     0.00646
+    ],
+    "top3_after_1_letter": [
+     0.68617,
+     0.00607
+    ],
+    "has_followers": [
+     0.94497,
+     0.00138
+    ],
+    "next_in_dictionary": [
+     0.95244,
+     0.0021
+    ]
+   },
+   "published_trainonly": {
+    "top3": [
+     0.24687,
+     0.00556
+    ],
+    "top3_fallback": [
+     0.25648,
+     0.00607
+    ],
+    "top3_after_1_letter": [
+     0.54827,
+     0.00767
+    ],
+    "has_followers": [
+     0.91902,
+     0.00152
+    ],
+    "next_in_dictionary": [
+     0.95244,
+     0.0021
+    ]
+   },
+   "pro": {
+    "top3": [
+     0.25871,
+     0.00479
+    ],
+    "top3_fallback": [
+     0.26197,
+     0.00482
+    ],
+    "top3_after_1_letter": [
+     0.53212,
+     0.00643
+    ],
+    "has_followers": [
+     0.98261,
+     0.00036
+    ],
+    "next_in_dictionary": [
+     0.99479,
+     0.0012
+    ]
+   },
+   "_": {
+    "pairs": [
+     11123.2,
+     174.35932
+    ]
+   },
+   "pro_minus_published_top3_fallback": [
+    -0.08886,
+    0.00398
+   ],
+   "pro_minus_published_top3_after_1_letter": [
+    -0.15405,
+    0.00368
+   ]
+  }
+ }
+}

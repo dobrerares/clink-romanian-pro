@@ -1,0 +1,3687 @@
+{
+ "split": "test",
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "packs": {
+  "official": {
+   "prefix": "/home/rdobre/projects/clink/upstream/clink-language-packs/Lexicons/ro",
+   "words": 29920,
+   "pairs": 40000,
+   "bytes": {
+    "clex": 403899,
+    "cngm": 360012
+   }
+  },
+  "published": {
+   "prefix": "/home/rdobre/projects/clink/clink-romanian-language/Lexicons/ro",
+   "words": 41630,
+   "pairs": 87210,
+   "bytes": {
+    "clex": 582640,
+    "cngm": 784902
+   }
+  },
+  "pro": {
+   "prefix": "/home/rdobre/projects/clink/romanian-pro/Lexicons/ro",
+   "words": 150000,
+   "pairs": 304288,
+   "bytes": {
+    "clex": 2150727,
+    "cngm": 2738604
+   }
+  }
+ },
+ "sentences_available": {
+  "tatoeba": 4169,
+  "wiki": 133616,
+  "wikitalk": 34839,
+  "cv": 1388
+ },
+ "coverage": {
+  "tatoeba": {
+   "tokens": 27578,
+   "official": 0.96298,
+   "published": 0.94572,
+   "pro": 0.99434
+  },
+  "wiki": {
+   "tokens": 2560055,
+   "official": 0.80988,
+   "published": 0.88627,
+   "pro": 0.95608
+  },
+  "wikitalk": {
+   "tokens": 620449,
+   "official": 0.86953,
+   "published": 0.89946,
+   "pro": 0.94274
+  },
+  "cv": {
+   "tokens": 10060,
+   "official": 0.93817,
+   "published": 0.95855,
+   "pro": 0.99135
+  }
+ },
+ "typo": {
+  "gaussian/ro/tatoeba/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.70097,
+     0.00737
+    ],
+    "wrong_change": [
+     0.04061,
+     0.00314
+    ],
+    "clean_broken": [
+     0.01003,
+     0.00203
+    ],
+    "typo_fixed": [
+     0.57528,
+     0.00735
+    ],
+    "accent_fixed": [
+     0.07782,
+     0.00911
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.83964,
+     0.00634
+    ],
+    "wrong_change": [
+     0.0437,
+     0.00164
+    ],
+    "clean_broken": [
+     0.00731,
+     0.00184
+    ],
+    "typo_fixed": [
+     0.57525,
+     0.01033
+    ],
+    "accent_fixed": [
+     0.61359,
+     0.01156
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.84753,
+     0.00735
+    ],
+    "wrong_change": [
+     0.03114,
+     0.00243
+    ],
+    "clean_broken": [
+     0.00221,
+     0.00088
+    ],
+    "typo_fixed": [
+     0.56728,
+     0.02966
+    ],
+    "accent_fixed": [
+     0.63638,
+     0.00949
+    ]
+   },
+   "_": {
+    "words": [
+     6507.6,
+     95.0252
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.14656,
+    0.00225
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.00947,
+    0.00516
+   ],
+   "pro_minus_published_word_acc": [
+    0.00789,
+    0.00313
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01256,
+    0.00313
+   ]
+  },
+  "gaussian/ro/tatoeba/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.93105,
+     0.00257
+    ],
+    "wrong_change": [
+     0.04211,
+     0.00305
+    ],
+    "clean_broken": [
+     0.01378,
+     0.00112
+    ],
+    "typo_fixed": [
+     0.57528,
+     0.00735
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.93385,
+     0.00183
+    ],
+    "wrong_change": [
+     0.03973,
+     0.00199
+    ],
+    "clean_broken": [
+     0.01054,
+     0.00116
+    ],
+    "typo_fixed": [
+     0.57525,
+     0.01033
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.93943,
+     0.00347
+    ],
+    "wrong_change": [
+     0.02803,
+     0.00151
+    ],
+    "clean_broken": [
+     0.00287,
+     0.00056
+    ],
+    "typo_fixed": [
+     0.56728,
+     0.02966
+    ]
+   },
+   "_": {
+    "words": [
+     6507.6,
+     95.0252
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.00838,
+    0.00387
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01408,
+    0.00387
+   ],
+   "pro_minus_published_word_acc": [
+    0.00558,
+    0.00332
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.0117,
+    0.00267
+   ]
+  },
+  "gaussian/ro/wiki/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.67799,
+     0.00446
+    ],
+    "wrong_change": [
+     0.09132,
+     0.00332
+    ],
+    "clean_broken": [
+     0.07124,
+     0.00266
+    ],
+    "typo_fixed": [
+     0.4357,
+     0.01217
+    ],
+    "accent_fixed": [
+     0.11644,
+     0.00552
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.84668,
+     0.00335
+    ],
+    "wrong_change": [
+     0.06291,
+     0.00158
+    ],
+    "clean_broken": [
+     0.04543,
+     0.00167
+    ],
+    "typo_fixed": [
+     0.55278,
+     0.01416
+    ],
+    "accent_fixed": [
+     0.74265,
+     0.01158
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.88019,
+     0.00489
+    ],
+    "wrong_change": [
+     0.04487,
+     0.0026
+    ],
+    "clean_broken": [
+     0.02302,
+     0.00287
+    ],
+    "typo_fixed": [
+     0.59182,
+     0.0195
+    ],
+    "accent_fixed": [
+     0.80479,
+     0.01204
+    ]
+   },
+   "_": {
+    "words": [
+     13440.6,
+     188.09034
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.2022,
+    0.00475
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.04646,
+    0.00481
+   ],
+   "pro_minus_published_word_acc": [
+    0.03351,
+    0.00211
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01805,
+    0.00252
+   ]
+  },
+  "gaussian/ro/wiki/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.8502,
+     0.00307
+    ],
+    "wrong_change": [
+     0.09341,
+     0.00332
+    ],
+    "clean_broken": [
+     0.07349,
+     0.0028
+    ],
+    "typo_fixed": [
+     0.4357,
+     0.01217
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.89555,
+     0.00328
+    ],
+    "wrong_change": [
+     0.06178,
+     0.00202
+    ],
+    "clean_broken": [
+     0.04135,
+     0.00101
+    ],
+    "typo_fixed": [
+     0.55278,
+     0.01416
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.91953,
+     0.00477
+    ],
+    "wrong_change": [
+     0.04403,
+     0.00285
+    ],
+    "clean_broken": [
+     0.02014,
+     0.00223
+    ],
+    "typo_fixed": [
+     0.59182,
+     0.0195
+    ]
+   },
+   "_": {
+    "words": [
+     13440.6,
+     188.09034
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.06934,
+    0.00476
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.04938,
+    0.00491
+   ],
+   "pro_minus_published_word_acc": [
+    0.02399,
+    0.00258
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01775,
+    0.0028
+   ]
+  },
+  "gaussian/ro/wikitalk/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.69945,
+     0.00681
+    ],
+    "wrong_change": [
+     0.07081,
+     0.00361
+    ],
+    "clean_broken": [
+     0.04589,
+     0.00331
+    ],
+    "typo_fixed": [
+     0.46509,
+     0.01141
+    ],
+    "accent_fixed": [
+     0.0842,
+     0.00295
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.81962,
+     0.00368
+    ],
+    "wrong_change": [
+     0.07658,
+     0.00385
+    ],
+    "clean_broken": [
+     0.06097,
+     0.00408
+    ],
+    "typo_fixed": [
+     0.54246,
+     0.02593
+    ],
+    "accent_fixed": [
+     0.64534,
+     0.01267
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.833,
+     0.00355
+    ],
+    "wrong_change": [
+     0.06717,
+     0.00416
+    ],
+    "clean_broken": [
+     0.05424,
+     0.00472
+    ],
+    "typo_fixed": [
+     0.5543,
+     0.02005
+    ],
+    "accent_fixed": [
+     0.68024,
+     0.01063
+    ]
+   },
+   "_": {
+    "words": [
+     12294.8,
+     230.10579
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.13356,
+    0.00479
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.00364,
+    0.00458
+   ],
+   "pro_minus_published_word_acc": [
+    0.01338,
+    0.00277
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00941,
+    0.00305
+   ]
+  },
+  "gaussian/ro/wikitalk/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.88133,
+     0.00251
+    ],
+    "wrong_change": [
+     0.07279,
+     0.00369
+    ],
+    "clean_broken": [
+     0.04835,
+     0.00291
+    ],
+    "typo_fixed": [
+     0.46509,
+     0.01141
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.88867,
+     0.00133
+    ],
+    "wrong_change": [
+     0.0757,
+     0.00375
+    ],
+    "clean_broken": [
+     0.05287,
+     0.00419
+    ],
+    "typo_fixed": [
+     0.54246,
+     0.02593
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.89746,
+     0.00244
+    ],
+    "wrong_change": [
+     0.0663,
+     0.00368
+    ],
+    "clean_broken": [
+     0.04459,
+     0.004
+    ],
+    "typo_fixed": [
+     0.5543,
+     0.02005
+    ]
+   },
+   "_": {
+    "words": [
+     12294.8,
+     230.10579
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.01613,
+    0.00331
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.00649,
+    0.00421
+   ],
+   "pro_minus_published_word_acc": [
+    0.00878,
+    0.00241
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.0094,
+    0.00233
+   ]
+  },
+  "gaussian/ro/cv/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.70567,
+     0.00254
+    ],
+    "wrong_change": [
+     0.04925,
+     0.00224
+    ],
+    "clean_broken": [
+     0.01663,
+     0.00175
+    ],
+    "typo_fixed": [
+     0.5771,
+     0.00978
+    ],
+    "accent_fixed": [
+     0.10258,
+     0.00547
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.83814,
+     0.00239
+    ],
+    "wrong_change": [
+     0.04254,
+     0.00208
+    ],
+    "clean_broken": [
+     0.01359,
+     0.0015
+    ],
+    "typo_fixed": [
+     0.63013,
+     0.01096
+    ],
+    "accent_fixed": [
+     0.6001,
+     0.00528
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.84655,
+     0.00237
+    ],
+    "wrong_change": [
+     0.03455,
+     0.00231
+    ],
+    "clean_broken": [
+     0.00592,
+     0.00137
+    ],
+    "typo_fixed": [
+     0.62381,
+     0.00841
+    ],
+    "accent_fixed": [
+     0.61909,
+     0.00772
+    ]
+   },
+   "_": {
+    "words": [
+     7155.8,
+     23.78953
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.14089,
+    0.00323
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.0147,
+    0.00261
+   ],
+   "pro_minus_published_word_acc": [
+    0.00841,
+    0.00203
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00799,
+    0.00127
+   ]
+  },
+  "gaussian/ro/cv/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.91554,
+     0.00306
+    ],
+    "wrong_change": [
+     0.05033,
+     0.00238
+    ],
+    "clean_broken": [
+     0.02541,
+     0.00153
+    ],
+    "typo_fixed": [
+     0.5771,
+     0.00978
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.93189,
+     0.00247
+    ],
+    "wrong_change": [
+     0.03994,
+     0.00225
+    ],
+    "clean_broken": [
+     0.01546,
+     0.00183
+    ],
+    "typo_fixed": [
+     0.63013,
+     0.01096
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.93932,
+     0.00104
+    ],
+    "wrong_change": [
+     0.03022,
+     0.00223
+    ],
+    "clean_broken": [
+     0.00564,
+     0.00122
+    ],
+    "typo_fixed": [
+     0.62381,
+     0.00841
+    ]
+   },
+   "_": {
+    "words": [
+     7155.8,
+     23.78953
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.02378,
+    0.00285
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.02012,
+    0.00266
+   ],
+   "pro_minus_published_word_acc": [
+    0.00743,
+    0.00177
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00972,
+    0.0018
+   ]
+  },
+  "gaussian/combined/tatoeba/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.69642,
+     0.00811
+    ],
+    "wrong_change": [
+     0.03968,
+     0.00084
+    ],
+    "clean_broken": [
+     0.00917,
+     0.00154
+    ],
+    "typo_fixed": [
+     0.53793,
+     0.00702
+    ],
+    "accent_fixed": [
+     0.07758,
+     0.00902
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.79204,
+     0.00699
+    ],
+    "wrong_change": [
+     0.04278,
+     0.00149
+    ],
+    "clean_broken": [
+     0.00701,
+     0.00149
+    ],
+    "typo_fixed": [
+     0.54155,
+     0.01214
+    ],
+    "accent_fixed": [
+     0.44439,
+     0.01303
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.80245,
+     0.00818
+    ],
+    "wrong_change": [
+     0.03215,
+     0.00257
+    ],
+    "clean_broken": [
+     0.00206,
+     0.00085
+    ],
+    "typo_fixed": [
+     0.54597,
+     0.03058
+    ],
+    "accent_fixed": [
+     0.47091,
+     0.01026
+    ]
+   },
+   "_": {
+    "words": [
+     6507.6,
+     95.0252
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.10603,
+    0.00202
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.00753,
+    0.00308
+   ],
+   "pro_minus_published_word_acc": [
+    0.01041,
+    0.00271
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01063,
+    0.00175
+   ]
+  },
+  "gaussian/combined/tatoeba/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.92604,
+     0.00204
+    ],
+    "wrong_change": [
+     0.04245,
+     0.00162
+    ],
+    "clean_broken": [
+     0.01378,
+     0.00088
+    ],
+    "typo_fixed": [
+     0.53793,
+     0.00702
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.9293,
+     0.00169
+    ],
+    "wrong_change": [
+     0.04026,
+     0.00148
+    ],
+    "clean_broken": [
+     0.01058,
+     0.00088
+    ],
+    "typo_fixed": [
+     0.54155,
+     0.01214
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.93667,
+     0.00344
+    ],
+    "wrong_change": [
+     0.02978,
+     0.0018
+    ],
+    "clean_broken": [
+     0.00277,
+     0.00051
+    ],
+    "typo_fixed": [
+     0.54597,
+     0.03058
+    ]
+   },
+   "_": {
+    "words": [
+     6507.6,
+     95.0252
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.01063,
+    0.0031
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01266,
+    0.00178
+   ],
+   "pro_minus_published_word_acc": [
+    0.00737,
+    0.00275
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01048,
+    0.00143
+   ]
+  },
+  "gaussian/combined/wiki/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.67996,
+     0.00573
+    ],
+    "wrong_change": [
+     0.08995,
+     0.00322
+    ],
+    "clean_broken": [
+     0.06418,
+     0.00261
+    ],
+    "typo_fixed": [
+     0.42074,
+     0.01336
+    ],
+    "accent_fixed": [
+     0.11575,
+     0.00535
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.78115,
+     0.00615
+    ],
+    "wrong_change": [
+     0.05922,
+     0.00267
+    ],
+    "clean_broken": [
+     0.0385,
+     0.00198
+    ],
+    "typo_fixed": [
+     0.53692,
+     0.01692
+    ],
+    "accent_fixed": [
+     0.42808,
+     0.00342
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.8122,
+     0.00707
+    ],
+    "wrong_change": [
+     0.04271,
+     0.0029
+    ],
+    "clean_broken": [
+     0.01845,
+     0.00217
+    ],
+    "typo_fixed": [
+     0.57568,
+     0.0227
+    ],
+    "accent_fixed": [
+     0.48591,
+     0.00649
+    ]
+   },
+   "_": {
+    "words": [
+     13440.6,
+     188.09034
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.13224,
+    0.00438
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.04724,
+    0.00356
+   ],
+   "pro_minus_published_word_acc": [
+    0.03105,
+    0.00239
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01651,
+    0.00164
+   ]
+  },
+  "gaussian/combined/wiki/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.8498,
+     0.00413
+    ],
+    "wrong_change": [
+     0.09299,
+     0.00319
+    ],
+    "clean_broken": [
+     0.0712,
+     0.00227
+    ],
+    "typo_fixed": [
+     0.42074,
+     0.01336
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.89687,
+     0.00471
+    ],
+    "wrong_change": [
+     0.05904,
+     0.00318
+    ],
+    "clean_broken": [
+     0.03686,
+     0.00194
+    ],
+    "typo_fixed": [
+     0.53692,
+     0.01692
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.9199,
+     0.00539
+    ],
+    "wrong_change": [
+     0.0425,
+     0.00336
+    ],
+    "clean_broken": [
+     0.01672,
+     0.00156
+    ],
+    "typo_fixed": [
+     0.57568,
+     0.0227
+    ]
+   },
+   "_": {
+    "words": [
+     13440.6,
+     188.09034
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.07011,
+    0.00412
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.05049,
+    0.00343
+   ],
+   "pro_minus_published_word_acc": [
+    0.02303,
+    0.00277
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01654,
+    0.00221
+   ]
+  },
+  "gaussian/combined/wikitalk/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.69914,
+     0.00726
+    ],
+    "wrong_change": [
+     0.06881,
+     0.0033
+    ],
+    "clean_broken": [
+     0.04357,
+     0.00272
+    ],
+    "typo_fixed": [
+     0.45358,
+     0.01328
+    ],
+    "accent_fixed": [
+     0.0835,
+     0.00284
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.7819,
+     0.0046
+    ],
+    "wrong_change": [
+     0.06533,
+     0.00253
+    ],
+    "clean_broken": [
+     0.04448,
+     0.00169
+    ],
+    "typo_fixed": [
+     0.52438,
+     0.02519
+    ],
+    "accent_fixed": [
+     0.42891,
+     0.01516
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.79736,
+     0.00498
+    ],
+    "wrong_change": [
+     0.05439,
+     0.00216
+    ],
+    "clean_broken": [
+     0.03487,
+     0.00113
+    ],
+    "typo_fixed": [
+     0.54288,
+     0.01836
+    ],
+    "accent_fixed": [
+     0.46026,
+     0.01114
+    ]
+   },
+   "_": {
+    "words": [
+     12294.8,
+     230.10579
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.09822,
+    0.0029
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01442,
+    0.00303
+   ],
+   "pro_minus_published_word_acc": [
+    0.01546,
+    0.00185
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01094,
+    0.00098
+   ]
+  },
+  "gaussian/combined/wikitalk/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.88029,
+     0.00191
+    ],
+    "wrong_change": [
+     0.07174,
+     0.00367
+    ],
+    "clean_broken": [
+     0.04763,
+     0.00245
+    ],
+    "typo_fixed": [
+     0.45358,
+     0.01328
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.89649,
+     0.00174
+    ],
+    "wrong_change": [
+     0.06543,
+     0.00244
+    ],
+    "clean_broken": [
+     0.04067,
+     0.00205
+    ],
+    "typo_fixed": [
+     0.52438,
+     0.02519
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.90829,
+     0.0013
+    ],
+    "wrong_change": [
+     0.05444,
+     0.00154
+    ],
+    "clean_broken": [
+     0.02999,
+     0.00146
+    ],
+    "typo_fixed": [
+     0.54288,
+     0.01836
+    ]
+   },
+   "_": {
+    "words": [
+     12294.8,
+     230.10579
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.028,
+    0.00315
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01729,
+    0.00341
+   ],
+   "pro_minus_published_word_acc": [
+    0.0118,
+    0.00151
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01099,
+    0.00114
+   ]
+  },
+  "gaussian/combined/cv/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.70005,
+     0.00355
+    ],
+    "wrong_change": [
+     0.05154,
+     0.00264
+    ],
+    "clean_broken": [
+     0.01895,
+     0.00136
+    ],
+    "typo_fixed": [
+     0.55001,
+     0.01254
+    ],
+    "accent_fixed": [
+     0.10179,
+     0.00564
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.79144,
+     0.00451
+    ],
+    "wrong_change": [
+     0.04304,
+     0.00272
+    ],
+    "clean_broken": [
+     0.01299,
+     0.00176
+    ],
+    "typo_fixed": [
+     0.61056,
+     0.01437
+    ],
+    "accent_fixed": [
+     0.42117,
+     0.00935
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.80511,
+     0.00338
+    ],
+    "wrong_change": [
+     0.03438,
+     0.00213
+    ],
+    "clean_broken": [
+     0.00476,
+     0.00135
+    ],
+    "typo_fixed": [
+     0.61046,
+     0.0084
+    ],
+    "accent_fixed": [
+     0.45636,
+     0.00724
+    ]
+   },
+   "_": {
+    "words": [
+     7155.8,
+     23.78953
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.10506,
+    0.00342
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01716,
+    0.0025
+   ],
+   "pro_minus_published_word_acc": [
+    0.01367,
+    0.00201
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00866,
+    0.00158
+   ]
+  },
+  "gaussian/combined/cv/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.9092,
+     0.00357
+    ],
+    "wrong_change": [
+     0.05352,
+     0.00299
+    ],
+    "clean_broken": [
+     0.02813,
+     0.00157
+    ],
+    "typo_fixed": [
+     0.55001,
+     0.01254
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.92921,
+     0.0035
+    ],
+    "wrong_change": [
+     0.04092,
+     0.00301
+    ],
+    "clean_broken": [
+     0.0152,
+     0.00207
+    ],
+    "typo_fixed": [
+     0.61056,
+     0.01437
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.93804,
+     0.00165
+    ],
+    "wrong_change": [
+     0.03049,
+     0.00208
+    ],
+    "clean_broken": [
+     0.00482,
+     0.00119
+    ],
+    "typo_fixed": [
+     0.61046,
+     0.0084
+    ]
+   },
+   "_": {
+    "words": [
+     7155.8,
+     23.78953
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.02884,
+    0.00295
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.02303,
+    0.00276
+   ],
+   "pro_minus_published_word_acc": [
+    0.00883,
+    0.00219
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01042,
+    0.0019
+   ]
+  },
+  "gaussian/combined/english/en": {
+   "official": {
+    "word_acc": [
+     0.93665,
+     0.00401
+    ],
+    "wrong_change": [
+     0.02983,
+     0.00113
+    ],
+    "clean_broken": [
+     0.00822,
+     0.002
+    ],
+    "typo_fixed": [
+     0.55875,
+     0.02062
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.9359,
+     0.00382
+    ],
+    "wrong_change": [
+     0.03018,
+     0.00094
+    ],
+    "clean_broken": [
+     0.00825,
+     0.0019
+    ],
+    "typo_fixed": [
+     0.5531,
+     0.02019
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.93833,
+     0.00332
+    ],
+    "wrong_change": [
+     0.02367,
+     0.00214
+    ],
+    "clean_broken": [
+     0.00356,
+     0.00074
+    ],
+    "typo_fixed": [
+     0.54016,
+     0.01541
+    ]
+   },
+   "_": {
+    "words": [
+     7013.2,
+     113.86812
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.00169,
+    0.00163
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.00616,
+    0.00284
+   ],
+   "pro_minus_published_word_acc": [
+    0.00243,
+    0.0019
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00651,
+    0.00277
+   ]
+  },
+  "realistic/ro/tatoeba/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.67274,
+     0.00549
+    ],
+    "wrong_change": [
+     0.06174,
+     0.00465
+    ],
+    "clean_broken": [
+     0.00938,
+     0.00147
+    ],
+    "typo_fixed": [
+     0.51282,
+     0.01678
+    ],
+    "accent_fixed": [
+     0.07002,
+     0.00702
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.78765,
+     0.01027
+    ],
+    "wrong_change": [
+     0.06526,
+     0.0052
+    ],
+    "clean_broken": [
+     0.00748,
+     0.00095
+    ],
+    "typo_fixed": [
+     0.50687,
+     0.02128
+    ],
+    "accent_fixed": [
+     0.60676,
+     0.01268
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.79359,
+     0.0103
+    ],
+    "wrong_change": [
+     0.04991,
+     0.0043
+    ],
+    "clean_broken": [
+     0.00196,
+     0.00072
+    ],
+    "typo_fixed": [
+     0.50306,
+     0.01779
+    ],
+    "accent_fixed": [
+     0.6248,
+     0.01194
+    ]
+   },
+   "_": {
+    "words": [
+     6507.6,
+     95.0252
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.12084,
+    0.00722
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01184,
+    0.00073
+   ],
+   "pro_minus_published_word_acc": [
+    0.00593,
+    0.00114
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01535,
+    0.00241
+   ]
+  },
+  "realistic/ro/tatoeba/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.86823,
+     0.01316
+    ],
+    "wrong_change": [
+     0.06524,
+     0.0055
+    ],
+    "clean_broken": [
+     0.01265,
+     0.00145
+    ],
+    "typo_fixed": [
+     0.51282,
+     0.01678
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.86886,
+     0.01378
+    ],
+    "wrong_change": [
+     0.06418,
+     0.00525
+    ],
+    "clean_broken": [
+     0.0098,
+     0.0009
+    ],
+    "typo_fixed": [
+     0.50687,
+     0.02128
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.87338,
+     0.01304
+    ],
+    "wrong_change": [
+     0.05095,
+     0.00465
+    ],
+    "clean_broken": [
+     0.00255,
+     0.00069
+    ],
+    "typo_fixed": [
+     0.50306,
+     0.01779
+    ]
+   },
+   "_": {
+    "words": [
+     6507.6,
+     95.0252
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.00515,
+    0.00262
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01429,
+    0.00109
+   ],
+   "pro_minus_published_word_acc": [
+    0.00452,
+    0.00143
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01323,
+    0.00175
+   ]
+  },
+  "realistic/ro/wiki/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.63214,
+     0.00689
+    ],
+    "wrong_change": [
+     0.10365,
+     0.00254
+    ],
+    "clean_broken": [
+     0.06748,
+     0.00483
+    ],
+    "typo_fixed": [
+     0.39533,
+     0.00503
+    ],
+    "accent_fixed": [
+     0.10505,
+     0.00779
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.78621,
+     0.00661
+    ],
+    "wrong_change": [
+     0.07743,
+     0.00162
+    ],
+    "clean_broken": [
+     0.04252,
+     0.00137
+    ],
+    "typo_fixed": [
+     0.49213,
+     0.00133
+    ],
+    "accent_fixed": [
+     0.74245,
+     0.01376
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.81549,
+     0.00803
+    ],
+    "wrong_change": [
+     0.06172,
+     0.0031
+    ],
+    "clean_broken": [
+     0.02175,
+     0.00295
+    ],
+    "typo_fixed": [
+     0.51728,
+     0.0092
+    ],
+    "accent_fixed": [
+     0.80414,
+     0.01361
+    ]
+   },
+   "_": {
+    "words": [
+     13440.6,
+     188.09034
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.18335,
+    0.00843
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.04193,
+    0.0049
+   ],
+   "pro_minus_published_word_acc": [
+    0.02927,
+    0.00295
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01571,
+    0.00233
+   ]
+  },
+  "realistic/ro/wiki/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.77745,
+     0.00937
+    ],
+    "wrong_change": [
+     0.10588,
+     0.00273
+    ],
+    "clean_broken": [
+     0.06939,
+     0.00427
+    ],
+    "typo_fixed": [
+     0.39533,
+     0.00503
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.82717,
+     0.00684
+    ],
+    "wrong_change": [
+     0.07755,
+     0.00155
+    ],
+    "clean_broken": [
+     0.03853,
+     0.00101
+    ],
+    "typo_fixed": [
+     0.49213,
+     0.00133
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.8482,
+     0.00726
+    ],
+    "wrong_change": [
+     0.06528,
+     0.00293
+    ],
+    "clean_broken": [
+     0.01913,
+     0.00225
+    ],
+    "typo_fixed": [
+     0.51728,
+     0.0092
+    ]
+   },
+   "_": {
+    "words": [
+     13440.6,
+     188.09034
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.07075,
+    0.00735
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.04061,
+    0.0044
+   ],
+   "pro_minus_published_word_acc": [
+    0.02102,
+    0.00363
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01227,
+    0.00247
+   ]
+  },
+  "realistic/ro/wikitalk/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.65723,
+     0.00537
+    ],
+    "wrong_change": [
+     0.08723,
+     0.00496
+    ],
+    "clean_broken": [
+     0.04098,
+     0.00228
+    ],
+    "typo_fixed": [
+     0.41966,
+     0.01069
+    ],
+    "accent_fixed": [
+     0.07472,
+     0.0047
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.76634,
+     0.00778
+    ],
+    "wrong_change": [
+     0.0908,
+     0.00564
+    ],
+    "clean_broken": [
+     0.05811,
+     0.00418
+    ],
+    "typo_fixed": [
+     0.48986,
+     0.00681
+    ],
+    "accent_fixed": [
+     0.63901,
+     0.01277
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.77561,
+     0.00917
+    ],
+    "wrong_change": [
+     0.0807,
+     0.00685
+    ],
+    "clean_broken": [
+     0.05234,
+     0.00566
+    ],
+    "typo_fixed": [
+     0.49313,
+     0.01136
+    ],
+    "accent_fixed": [
+     0.66901,
+     0.01222
+    ]
+   },
+   "_": {
+    "words": [
+     12294.8,
+     230.10579
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.11838,
+    0.00763
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.00653,
+    0.00374
+   ],
+   "pro_minus_published_word_acc": [
+    0.00927,
+    0.0028
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.0101,
+    0.00221
+   ]
+  },
+  "realistic/ro/wikitalk/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.81198,
+     0.01209
+    ],
+    "wrong_change": [
+     0.09018,
+     0.00543
+    ],
+    "clean_broken": [
+     0.0427,
+     0.00194
+    ],
+    "typo_fixed": [
+     0.41966,
+     0.01069
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.82555,
+     0.00979
+    ],
+    "wrong_change": [
+     0.09184,
+     0.00552
+    ],
+    "clean_broken": [
+     0.05017,
+     0.00377
+    ],
+    "typo_fixed": [
+     0.48986,
+     0.00681
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.83163,
+     0.0123
+    ],
+    "wrong_change": [
+     0.08451,
+     0.00607
+    ],
+    "clean_broken": [
+     0.04297,
+     0.00479
+    ],
+    "typo_fixed": [
+     0.49313,
+     0.01136
+    ]
+   },
+   "_": {
+    "words": [
+     12294.8,
+     230.10579
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.01965,
+    0.00366
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.00568,
+    0.00259
+   ],
+   "pro_minus_published_word_acc": [
+    0.00607,
+    0.00343
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00734,
+    0.00136
+   ]
+  },
+  "realistic/ro/cv/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.67403,
+     0.003
+    ],
+    "wrong_change": [
+     0.06727,
+     0.00187
+    ],
+    "clean_broken": [
+     0.01606,
+     0.00095
+    ],
+    "typo_fixed": [
+     0.52063,
+     0.01543
+    ],
+    "accent_fixed": [
+     0.09109,
+     0.00745
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.78789,
+     0.00702
+    ],
+    "wrong_change": [
+     0.05827,
+     0.00309
+    ],
+    "clean_broken": [
+     0.01242,
+     0.00146
+    ],
+    "typo_fixed": [
+     0.55933,
+     0.0113
+    ],
+    "accent_fixed": [
+     0.58765,
+     0.0038
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.79135,
+     0.00677
+    ],
+    "wrong_change": [
+     0.04969,
+     0.00233
+    ],
+    "clean_broken": [
+     0.0057,
+     0.00105
+    ],
+    "typo_fixed": [
+     0.54894,
+     0.01309
+    ],
+    "accent_fixed": [
+     0.60147,
+     0.00711
+    ]
+   },
+   "_": {
+    "words": [
+     7155.8,
+     23.78953
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.11732,
+    0.00747
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01758,
+    0.00104
+   ],
+   "pro_minus_published_word_acc": [
+    0.00346,
+    0.00204
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00858,
+    0.00259
+   ]
+  },
+  "realistic/ro/cv/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.85,
+     0.00695
+    ],
+    "wrong_change": [
+     0.06945,
+     0.00146
+    ],
+    "clean_broken": [
+     0.02474,
+     0.00185
+    ],
+    "typo_fixed": [
+     0.52063,
+     0.01543
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.86816,
+     0.01005
+    ],
+    "wrong_change": [
+     0.05808,
+     0.00303
+    ],
+    "clean_broken": [
+     0.0143,
+     0.00267
+    ],
+    "typo_fixed": [
+     0.55933,
+     0.0113
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.87171,
+     0.00893
+    ],
+    "wrong_change": [
+     0.05006,
+     0.00128
+    ],
+    "clean_broken": [
+     0.00544,
+     0.00059
+    ],
+    "typo_fixed": [
+     0.54894,
+     0.01309
+    ]
+   },
+   "_": {
+    "words": [
+     7155.8,
+     23.78953
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.02171,
+    0.00245
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.0194,
+    0.00098
+   ],
+   "pro_minus_published_word_acc": [
+    0.00355,
+    0.00225
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00802,
+    0.00224
+   ]
+  },
+  "realistic/combined/tatoeba/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.6634,
+     0.00637
+    ],
+    "wrong_change": [
+     0.05996,
+     0.00456
+    ],
+    "clean_broken": [
+     0.00859,
+     0.00157
+    ],
+    "typo_fixed": [
+     0.4739,
+     0.01387
+    ],
+    "accent_fixed": [
+     0.06974,
+     0.0067
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.73999,
+     0.01111
+    ],
+    "wrong_change": [
+     0.06572,
+     0.00506
+    ],
+    "clean_broken": [
+     0.0072,
+     0.00091
+    ],
+    "typo_fixed": [
+     0.47276,
+     0.01961
+    ],
+    "accent_fixed": [
+     0.42385,
+     0.0219
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.74988,
+     0.01024
+    ],
+    "wrong_change": [
+     0.05234,
+     0.00388
+    ],
+    "clean_broken": [
+     0.00184,
+     0.00062
+    ],
+    "typo_fixed": [
+     0.48193,
+     0.01628
+    ],
+    "accent_fixed": [
+     0.4455,
+     0.02268
+    ]
+   },
+   "_": {
+    "words": [
+     6507.6,
+     95.0252
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.08648,
+    0.00643
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.00763,
+    0.00148
+   ],
+   "pro_minus_published_word_acc": [
+    0.00989,
+    0.00139
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01338,
+    0.00245
+   ]
+  },
+  "realistic/combined/tatoeba/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.8587,
+     0.01299
+    ],
+    "wrong_change": [
+     0.06555,
+     0.00546
+    ],
+    "clean_broken": [
+     0.01241,
+     0.00211
+    ],
+    "typo_fixed": [
+     0.4739,
+     0.01387
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.86042,
+     0.01376
+    ],
+    "wrong_change": [
+     0.0667,
+     0.00592
+    ],
+    "clean_broken": [
+     0.00968,
+     0.00095
+    ],
+    "typo_fixed": [
+     0.47276,
+     0.01961
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.86819,
+     0.01231
+    ],
+    "wrong_change": [
+     0.05424,
+     0.004
+    ],
+    "clean_broken": [
+     0.00247,
+     0.00056
+    ],
+    "typo_fixed": [
+     0.48193,
+     0.01628
+    ]
+   },
+   "_": {
+    "words": [
+     6507.6,
+     95.0252
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.00948,
+    0.00372
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01131,
+    0.00228
+   ],
+   "pro_minus_published_word_acc": [
+    0.00777,
+    0.00185
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01246,
+    0.00274
+   ]
+  },
+  "realistic/combined/wiki/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.63183,
+     0.00624
+    ],
+    "wrong_change": [
+     0.10215,
+     0.00257
+    ],
+    "clean_broken": [
+     0.06045,
+     0.0044
+    ],
+    "typo_fixed": [
+     0.38141,
+     0.00528
+    ],
+    "accent_fixed": [
+     0.10456,
+     0.00749
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.72523,
+     0.00528
+    ],
+    "wrong_change": [
+     0.07452,
+     0.00198
+    ],
+    "clean_broken": [
+     0.03612,
+     0.00177
+    ],
+    "typo_fixed": [
+     0.48032,
+     0.00499
+    ],
+    "accent_fixed": [
+     0.39808,
+     0.00849
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.75282,
+     0.0056
+    ],
+    "wrong_change": [
+     0.06082,
+     0.00294
+    ],
+    "clean_broken": [
+     0.01696,
+     0.00228
+    ],
+    "typo_fixed": [
+     0.5056,
+     0.01038
+    ],
+    "accent_fixed": [
+     0.45481,
+     0.013
+    ]
+   },
+   "_": {
+    "words": [
+     13440.6,
+     188.09034
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.12099,
+    0.00426
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.04133,
+    0.00389
+   ],
+   "pro_minus_published_word_acc": [
+    0.02758,
+    0.00247
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.0137,
+    0.00145
+   ]
+  },
+  "realistic/combined/wiki/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.7754,
+     0.00915
+    ],
+    "wrong_change": [
+     0.10641,
+     0.00346
+    ],
+    "clean_broken": [
+     0.06665,
+     0.00411
+    ],
+    "typo_fixed": [
+     0.38141,
+     0.00528
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.82683,
+     0.00708
+    ],
+    "wrong_change": [
+     0.07667,
+     0.00195
+    ],
+    "clean_broken": [
+     0.03428,
+     0.00195
+    ],
+    "typo_fixed": [
+     0.48032,
+     0.00499
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.84744,
+     0.00686
+    ],
+    "wrong_change": [
+     0.06518,
+     0.00253
+    ],
+    "clean_broken": [
+     0.01553,
+     0.00161
+    ],
+    "typo_fixed": [
+     0.5056,
+     0.01038
+    ]
+   },
+   "_": {
+    "words": [
+     13440.6,
+     188.09034
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.07204,
+    0.00597
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.04123,
+    0.0038
+   ],
+   "pro_minus_published_word_acc": [
+    0.02061,
+    0.0033
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01149,
+    0.00161
+   ]
+  },
+  "realistic/combined/wikitalk/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.65454,
+     0.00541
+    ],
+    "wrong_change": [
+     0.08352,
+     0.00475
+    ],
+    "clean_broken": [
+     0.03856,
+     0.00257
+    ],
+    "typo_fixed": [
+     0.40514,
+     0.01038
+    ],
+    "accent_fixed": [
+     0.07416,
+     0.00424
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.72949,
+     0.00659
+    ],
+    "wrong_change": [
+     0.08001,
+     0.00391
+    ],
+    "clean_broken": [
+     0.04057,
+     0.00161
+    ],
+    "typo_fixed": [
+     0.47068,
+     0.00698
+    ],
+    "accent_fixed": [
+     0.40431,
+     0.01495
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.74252,
+     0.00822
+    ],
+    "wrong_change": [
+     0.06965,
+     0.00555
+    ],
+    "clean_broken": [
+     0.03168,
+     0.00199
+    ],
+    "typo_fixed": [
+     0.48295,
+     0.01096
+    ],
+    "accent_fixed": [
+     0.43186,
+     0.01193
+    ]
+   },
+   "_": {
+    "words": [
+     12294.8,
+     230.10579
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.08797,
+    0.00643
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01387,
+    0.00245
+   ],
+   "pro_minus_published_word_acc": [
+    0.01302,
+    0.00189
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.01036,
+    0.00182
+   ]
+  },
+  "realistic/combined/wikitalk/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.80878,
+     0.01188
+    ],
+    "wrong_change": [
+     0.0883,
+     0.00546
+    ],
+    "clean_broken": [
+     0.04171,
+     0.00223
+    ],
+    "typo_fixed": [
+     0.40514,
+     0.01038
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.82996,
+     0.0095
+    ],
+    "wrong_change": [
+     0.08269,
+     0.00438
+    ],
+    "clean_broken": [
+     0.03699,
+     0.00184
+    ],
+    "typo_fixed": [
+     0.47068,
+     0.00698
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.84031,
+     0.01121
+    ],
+    "wrong_change": [
+     0.07431,
+     0.00531
+    ],
+    "clean_broken": [
+     0.02729,
+     0.0018
+    ],
+    "typo_fixed": [
+     0.48295,
+     0.01096
+    ]
+   },
+   "_": {
+    "words": [
+     12294.8,
+     230.10579
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.03153,
+    0.00213
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01399,
+    0.00153
+   ],
+   "pro_minus_published_word_acc": [
+    0.01034,
+    0.00242
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00839,
+    0.0013
+   ]
+  },
+  "realistic/combined/cv/ro_plain": {
+   "official": {
+    "word_acc": [
+     0.66497,
+     0.00246
+    ],
+    "wrong_change": [
+     0.06898,
+     0.00292
+    ],
+    "clean_broken": [
+     0.01773,
+     0.00044
+    ],
+    "typo_fixed": [
+     0.49124,
+     0.01324
+    ],
+    "accent_fixed": [
+     0.09068,
+     0.00771
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.74298,
+     0.00739
+    ],
+    "wrong_change": [
+     0.05864,
+     0.00339
+    ],
+    "clean_broken": [
+     0.01168,
+     0.00212
+    ],
+    "typo_fixed": [
+     0.5393,
+     0.01237
+    ],
+    "accent_fixed": [
+     0.39252,
+     0.01216
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.75245,
+     0.00701
+    ],
+    "wrong_change": [
+     0.04972,
+     0.00217
+    ],
+    "clean_broken": [
+     0.00441,
+     0.00122
+    ],
+    "typo_fixed": [
+     0.53635,
+     0.01194
+    ],
+    "accent_fixed": [
+     0.42441,
+     0.01159
+    ]
+   },
+   "_": {
+    "words": [
+     7155.8,
+     23.78953
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.08748,
+    0.00675
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.01926,
+    0.00172
+   ],
+   "pro_minus_published_word_acc": [
+    0.00947,
+    0.00145
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00892,
+    0.00233
+   ]
+  },
+  "realistic/combined/cv/ro_diac": {
+   "official": {
+    "word_acc": [
+     0.84032,
+     0.00777
+    ],
+    "wrong_change": [
+     0.07284,
+     0.0026
+    ],
+    "clean_broken": [
+     0.0269,
+     0.00142
+    ],
+    "typo_fixed": [
+     0.49124,
+     0.01324
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.86296,
+     0.01033
+    ],
+    "wrong_change": [
+     0.05945,
+     0.00342
+    ],
+    "clean_broken": [
+     0.01388,
+     0.00292
+    ],
+    "typo_fixed": [
+     0.5393,
+     0.01237
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.86891,
+     0.00905
+    ],
+    "wrong_change": [
+     0.05062,
+     0.00139
+    ],
+    "clean_broken": [
+     0.00452,
+     0.00069
+    ],
+    "typo_fixed": [
+     0.53635,
+     0.01194
+    ]
+   },
+   "_": {
+    "words": [
+     7155.8,
+     23.78953
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    0.02859,
+    0.00169
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.02222,
+    0.00153
+   ],
+   "pro_minus_published_word_acc": [
+    0.00595,
+    0.00156
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00883,
+    0.00237
+   ]
+  },
+  "realistic/combined/english/en": {
+   "official": {
+    "word_acc": [
+     0.87518,
+     0.00562
+    ],
+    "wrong_change": [
+     0.05283,
+     0.00368
+    ],
+    "clean_broken": [
+     0.00763,
+     0.0015
+    ],
+    "typo_fixed": [
+     0.49786,
+     0.00686
+    ]
+   },
+   "published": {
+    "word_acc": [
+     0.87364,
+     0.00551
+    ],
+    "wrong_change": [
+     0.05373,
+     0.00337
+    ],
+    "clean_broken": [
+     0.00762,
+     0.00138
+    ],
+    "typo_fixed": [
+     0.49134,
+     0.00844
+    ]
+   },
+   "pro": {
+    "word_acc": [
+     0.87513,
+     0.00524
+    ],
+    "wrong_change": [
+     0.04477,
+     0.00158
+    ],
+    "clean_broken": [
+     0.00294,
+     0.00102
+    ],
+    "typo_fixed": [
+     0.48256,
+     0.00907
+    ]
+   },
+   "_": {
+    "words": [
+     7013.2,
+     113.86812
+    ]
+   },
+   "pro_minus_official_word_acc": [
+    -5e-05,
+    0.00129
+   ],
+   "pro_minus_official_wrong_change": [
+    -0.00805,
+    0.00302
+   ],
+   "pro_minus_published_word_acc": [
+    0.00149,
+    0.00133
+   ],
+   "pro_minus_published_wrong_change": [
+    -0.00896,
+    0.00216
+   ]
+  }
+ },
+ "next": {
+  "tatoeba": {
+   "official": {
+    "top3": [
+     0.30751,
+     0.00603
+    ],
+    "top3_fallback": [
+     0.31393,
+     0.00623
+    ],
+    "top3_after_1_letter": [
+     0.62847,
+     0.00701
+    ],
+    "has_followers": [
+     0.93303,
+     0.00288
+    ],
+    "next_in_dictionary": [
+     0.96171,
+     0.002
+    ]
+   },
+   "published": {
+    "top3": [
+     0.34724,
+     0.00606
+    ],
+    "top3_fallback": [
+     0.35082,
+     0.00646
+    ],
+    "top3_after_1_letter": [
+     0.68617,
+     0.00607
+    ],
+    "has_followers": [
+     0.94497,
+     0.00138
+    ],
+    "next_in_dictionary": [
+     0.95244,
+     0.0021
+    ]
+   },
+   "pro": {
+    "top3": [
+     0.25871,
+     0.00479
+    ],
+    "top3_fallback": [
+     0.26197,
+     0.00482
+    ],
+    "top3_after_1_letter": [
+     0.53212,
+     0.00643
+    ],
+    "has_followers": [
+     0.98261,
+     0.00036
+    ],
+    "next_in_dictionary": [
+     0.99479,
+     0.0012
+    ]
+   },
+   "_": {
+    "pairs": [
+     11123.2,
+     174.35932
+    ]
+   },
+   "pro_minus_official_top3_fallback": [
+    -0.05197,
+    0.00415
+   ],
+   "pro_minus_official_top3_after_1_letter": [
+    -0.09635,
+    0.00331
+   ],
+   "pro_minus_published_top3_fallback": [
+    -0.08886,
+    0.00398
+   ],
+   "pro_minus_published_top3_after_1_letter": [
+    -0.15405,
+    0.00368
+   ]
+  },
+  "wiki": {
+   "official": {
+    "top3": [
+     0.09289,
+     0.00256
+    ],
+    "top3_fallback": [
+     0.12768,
+     0.00324
+    ],
+    "top3_after_1_letter": [
+     0.33801,
+     0.00229
+    ],
+    "has_followers": [
+     0.66125,
+     0.00351
+    ],
+    "next_in_dictionary": [
+     0.80691,
+     0.00277
+    ]
+   },
+   "published": {
+    "top3": [
+     0.10212,
+     0.00259
+    ],
+    "top3_fallback": [
+     0.15547,
+     0.00275
+    ],
+    "top3_after_1_letter": [
+     0.37063,
+     0.00263
+    ],
+    "has_followers": [
+     0.73537,
+     0.00218
+    ],
+    "next_in_dictionary": [
+     0.88244,
+     0.00293
+    ]
+   },
+   "pro": {
+    "top3": [
+     0.23823,
+     0.00188
+    ],
+    "top3_fallback": [
+     0.24737,
+     0.00126
+    ],
+    "top3_after_1_letter": [
+     0.47483,
+     0.00454
+    ],
+    "has_followers": [
+     0.94433,
+     0.00157
+    ],
+    "next_in_dictionary": [
+     0.94996,
+     0.00214
+    ]
+   },
+   "_": {
+    "pairs": [
+     31778.4,
+     642.17863
+    ]
+   },
+   "pro_minus_official_top3_fallback": [
+    0.11969,
+    0.00409
+   ],
+   "pro_minus_official_top3_after_1_letter": [
+    0.13682,
+    0.00517
+   ],
+   "pro_minus_published_top3_fallback": [
+    0.0919,
+    0.00371
+   ],
+   "pro_minus_published_top3_after_1_letter": [
+    0.10421,
+    0.00472
+   ]
+  },
+  "wikitalk": {
+   "official": {
+    "top3": [
+     0.12354,
+     0.00396
+    ],
+    "top3_fallback": [
+     0.15384,
+     0.00489
+    ],
+    "top3_after_1_letter": [
+     0.38506,
+     0.00422
+    ],
+    "has_followers": [
+     0.75971,
+     0.00283
+    ],
+    "next_in_dictionary": [
+     0.86386,
+     0.00206
+    ]
+   },
+   "published": {
+    "top3": [
+     0.1266,
+     0.00463
+    ],
+    "top3_fallback": [
+     0.1556,
+     0.00482
+    ],
+    "top3_after_1_letter": [
+     0.39943,
+     0.00454
+    ],
+    "has_followers": [
+     0.81228,
+     0.00404
+    ],
+    "next_in_dictionary": [
+     0.89961,
+     0.00372
+    ]
+   },
+   "pro": {
+    "top3": [
+     0.25805,
+     0.00661
+    ],
+    "top3_fallback": [
+     0.26372,
+     0.00632
+    ],
+    "top3_after_1_letter": [
+     0.53148,
+     0.00516
+    ],
+    "has_followers": [
+     0.93907,
+     0.00226
+    ],
+    "next_in_dictionary": [
+     0.94319,
+     0.00201
+    ]
+   },
+   "_": {
+    "pairs": [
+     29551.6,
+     423.69672
+    ]
+   },
+   "pro_minus_official_top3_fallback": [
+    0.10988,
+    0.00342
+   ],
+   "pro_minus_official_top3_after_1_letter": [
+    0.14642,
+    0.00471
+   ],
+   "pro_minus_published_top3_fallback": [
+    0.10812,
+    0.00425
+   ],
+   "pro_minus_published_top3_after_1_letter": [
+    0.13205,
+    0.00461
+   ]
+  },
+  "cv": {
+   "official": {
+    "top3": [
+     0.19389,
+     0.00344
+    ],
+    "top3_fallback": [
+     0.2112,
+     0.00262
+    ],
+    "top3_after_1_letter": [
+     0.46138,
+     0.00192
+    ],
+    "has_followers": [
+     0.86745,
+     0.00369
+    ],
+    "next_in_dictionary": [
+     0.93442,
+     0.00513
+    ]
+   },
+   "published": {
+    "top3": [
+     0.19735,
+     0.00316
+    ],
+    "top3_fallback": [
+     0.21277,
+     0.00329
+    ],
+    "top3_after_1_letter": [
+     0.46797,
+     0.00169
+    ],
+    "has_followers": [
+     0.90647,
+     0.00322
+    ],
+    "next_in_dictionary": [
+     0.9599,
+     0.00314
+    ]
+   },
+   "pro": {
+    "top3": [
+     0.2591,
+     0.00118
+    ],
+    "top3_fallback": [
+     0.26212,
+     0.00158
+    ],
+    "top3_after_1_letter": [
+     0.53464,
+     0.0011
+    ],
+    "has_followers": [
+     0.98271,
+     0.00215
+    ],
+    "next_in_dictionary": [
+     0.99158,
+     0.00098
+    ]
+   },
+   "_": {
+    "pairs": [
+     8688.8,
+     121.13797
+    ]
+   },
+   "pro_minus_official_top3_fallback": [
+    0.05091,
+    0.00171
+   ],
+   "pro_minus_official_top3_after_1_letter": [
+    0.07326,
+    0.00121
+   ],
+   "pro_minus_published_top3_fallback": [
+    0.04934,
+    0.00209
+   ],
+   "pro_minus_published_top3_after_1_letter": [
+    0.06667,
+    0.00143
+   ]
+  }
+ },
+ "diacless": [
+  {
+   "intended": "să",
+   "typed": "sa",
+   "official": "sa",
+   "published": "sa",
+   "pro": "sa"
+  },
+  {
+   "intended": "și",
+   "typed": "si",
+   "official": "si",
+   "published": "și (combined: si)",
+   "pro": "și (combined: si)"
+  },
+  {
+   "intended": "după",
+   "typed": "dupa",
+   "official": "dupa",
+   "published": "după",
+   "pro": "după"
+  },
+  {
+   "intended": "știu",
+   "typed": "stiu",
+   "official": "stiu",
+   "published": "știu",
+   "pro": "știu"
+  },
+  {
+   "intended": "fată",
+   "typed": "fata",
+   "official": "fata",
+   "published": "fata",
+   "pro": "fata"
+  },
+  {
+   "intended": "fața",
+   "typed": "fata",
+   "official": "fata",
+   "published": "fata",
+   "pro": "fata"
+  },
+  {
+   "intended": "până",
+   "typed": "pana",
+   "official": "pana",
+   "published": "pana",
+   "pro": "pana"
+  },
+  {
+   "intended": "mă",
+   "typed": "ma",
+   "official": "ma",
+   "published": "ma",
+   "pro": "ma"
+  },
+  {
+   "intended": "că",
+   "typed": "ca",
+   "official": "ca",
+   "published": "ca",
+   "pro": "ca"
+  },
+  {
+   "intended": "mulțumesc",
+   "typed": "multumesc",
+   "official": "multumesc",
+   "published": "mulțumesc",
+   "pro": "mulțumesc"
+  },
+  {
+   "intended": "așa",
+   "typed": "asa",
+   "official": "asa",
+   "published": "așa (combined: asa)",
+   "pro": "așa (combined: asa)"
+  },
+  {
+   "intended": "ți",
+   "typed": "ti",
+   "official": "ti",
+   "published": "ți (combined: ti)",
+   "pro": "ți (combined: ti)"
+  },
+  {
+   "intended": "îți",
+   "typed": "iti",
+   "official": "iti",
+   "published": "îți",
+   "pro": "îți"
+  },
+  {
+   "intended": "ăsta",
+   "typed": "asta",
+   "official": "asta",
+   "published": "asta",
+   "pro": "asta"
+  },
+  {
+   "intended": "asta",
+   "typed": "asta",
+   "official": "asta",
+   "published": "asta",
+   "pro": "asta"
+  },
+  {
+   "intended": "țară",
+   "typed": "tara",
+   "official": "tara",
+   "published": "țară (combined: tara)",
+   "pro": "țară (combined: tara)"
+  },
+  {
+   "intended": "țara",
+   "typed": "tara",
+   "official": "tara",
+   "published": "țară (combined: tara)",
+   "pro": "țară (combined: tara)"
+  },
+  {
+   "intended": "mâine",
+   "typed": "maine",
+   "official": "maine",
+   "published": "mâine (combined: maine)",
+   "pro": "mâine (combined: maine)"
+  },
+  {
+   "intended": "astăzi",
+   "typed": "astazi",
+   "official": "astazi",
+   "published": "astăzi",
+   "pro": "astăzi"
+  },
+  {
+   "intended": "încă",
+   "typed": "inca",
+   "official": "inca",
+   "published": "încă (combined: inca)",
+   "pro": "încă (combined: inca)"
+  },
+  {
+   "intended": "înainte",
+   "typed": "inainte",
+   "official": "inainte",
+   "published": "înainte",
+   "pro": "înainte"
+  },
+  {
+   "intended": "făcut",
+   "typed": "facut",
+   "official": "facut",
+   "published": "făcut",
+   "pro": "făcut"
+  },
+  {
+   "intended": "trebuie",
+   "typed": "trebuie",
+   "official": "trebuie",
+   "published": "trebuie",
+   "pro": "trebuie"
+  },
+  {
+   "intended": "vrea",
+   "typed": "vrea",
+   "official": "vrea",
+   "published": "vrea",
+   "pro": "vrea"
+  },
+  {
+   "intended": "acasă",
+   "typed": "acasa",
+   "official": "acasa",
+   "published": "acasă",
+   "pro": "acasă"
+  },
+  {
+   "intended": "dacă",
+   "typed": "daca",
+   "official": "daca",
+   "published": "dacă",
+   "pro": "dacă"
+  },
+  {
+   "intended": "fără",
+   "typed": "fara",
+   "official": "fara",
+   "published": "fără",
+   "pro": "fără"
+  },
+  {
+   "intended": "pentru",
+   "typed": "pentru",
+   "official": "pentru",
+   "published": "pentru",
+   "pro": "pentru"
+  },
+  {
+   "intended": "câteva",
+   "typed": "cateva",
+   "official": "cateva",
+   "published": "câteva",
+   "pro": "câteva"
+  },
+  {
+   "intended": "nimeni",
+   "typed": "nimeni",
+   "official": "nimeni",
+   "published": "nimeni",
+   "pro": "nimeni"
+  },
+  {
+   "intended": "bună",
+   "typed": "buna",
+   "official": "buna",
+   "published": "bună",
+   "pro": "buna"
+  },
+  {
+   "intended": "aici",
+   "typed": "aici",
+   "official": "aici",
+   "published": "aici",
+   "pro": "aici"
+  },
+  {
+   "intended": "acolo",
+   "typed": "acolo",
+   "official": "acolo",
+   "published": "acolo",
+   "pro": "acolo"
+  },
+  {
+   "intended": "ușă",
+   "typed": "usa",
+   "official": "usa",
+   "published": "ușa (combined: usa)",
+   "pro": "ușa (combined: usa)"
+  },
+  {
+   "intended": "școală",
+   "typed": "scoala",
+   "official": "scoala",
+   "published": "școală",
+   "pro": "școală"
+  },
+  {
+   "intended": "frumoasă",
+   "typed": "frumoasa",
+   "official": "frumoasa",
+   "published": "frumoasa",
+   "pro": "frumoasa"
+  },
+  {
+   "intended": "mașină",
+   "typed": "masina",
+   "official": "masina",
+   "published": "mașina",
+   "pro": "mașina"
+  },
+  {
+   "intended": "întâlnire",
+   "typed": "intalnire",
+   "official": "intalnire",
+   "published": "întâlnire",
+   "pro": "întâlnire"
+  },
+  {
+   "intended": "săptămână",
+   "typed": "saptamana",
+   "official": "saptamana",
+   "published": "săptămână",
+   "pro": "săptămână"
+  },
+  {
+   "intended": "lună",
+   "typed": "luna",
+   "official": "luna",
+   "published": "luna",
+   "pro": "luna"
+  },
+  {
+   "intended": "tău",
+   "typed": "tau",
+   "official": "tau",
+   "published": "tău (combined: tau)",
+   "pro": "tău (combined: tau)"
+  },
+  {
+   "intended": "său",
+   "typed": "sau",
+   "official": "sau",
+   "published": "sau",
+   "pro": "sau"
+  },
+  {
+   "intended": "ție",
+   "typed": "tie",
+   "official": "tie",
+   "published": "ție (combined: tie)",
+   "pro": "ție (combined: tie)"
+  },
+  {
+   "intended": "mie",
+   "typed": "mie",
+   "official": "mie",
+   "published": "mie",
+   "pro": "mie"
+  },
+  {
+   "intended": "pe",
+   "typed": "pe",
+   "official": "pe",
+   "published": "pe",
+   "pro": "pe"
+  },
+  {
+   "intended": "tine",
+   "typed": "tine",
+   "official": "tine",
+   "published": "tine",
+   "pro": "tine"
+  },
+  {
+   "intended": "îmi",
+   "typed": "imi",
+   "official": "imi",
+   "published": "îmi (combined: imi)",
+   "pro": "îmi (combined: imi)"
+  },
+  {
+   "intended": "spune",
+   "typed": "spune",
+   "official": "spune",
+   "published": "spune",
+   "pro": "spune"
+  },
+  {
+   "intended": "spună",
+   "typed": "spuna",
+   "official": "spuna",
+   "published": "spună",
+   "pro": "spună"
+  },
+  {
+   "intended": "vină",
+   "typed": "vina",
+   "official": "vina",
+   "published": "vina",
+   "pro": "vina"
+  },
+  {
+   "intended": "vina",
+   "typed": "vina",
+   "official": "vina",
+   "published": "vina",
+   "pro": "vina"
+  },
+  {
+   "intended": "casă",
+   "typed": "casa",
+   "official": "casa",
+   "published": "casa",
+   "pro": "casa"
+  },
+  {
+   "intended": "casa",
+   "typed": "casa",
+   "official": "casa",
+   "published": "casa",
+   "pro": "casa"
+  },
+  {
+   "intended": "masă",
+   "typed": "masa",
+   "official": "masa",
+   "published": "masa",
+   "pro": "masa"
+  },
+  {
+   "intended": "masa",
+   "typed": "masa",
+   "official": "masa",
+   "published": "masa",
+   "pro": "masa"
+  },
+  {
+   "intended": "fata",
+   "typed": "fata",
+   "official": "fata",
+   "published": "fata",
+   "pro": "fata"
+  },
+  {
+   "intended": "pana",
+   "typed": "pana",
+   "official": "pana",
+   "published": "pana",
+   "pro": "pana"
+  },
+  {
+   "intended": "peste",
+   "typed": "peste",
+   "official": "peste",
+   "published": "peste",
+   "pro": "peste"
+  }
+ ]
+}

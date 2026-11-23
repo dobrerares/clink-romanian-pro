@@ -1,6 +1,7 @@
 # Romanian Pro — Phase 1 log
 
-Running log, newest entries at the bottom. Times are UTC.
+Running log, newest entries at the bottom. Times are UTC (local clock is CET = UTC+1); from
+entry 20:35 on they are taken from the output files' timestamps.
 
 ## 2026-11-23
 
@@ -54,7 +55,7 @@ dropped-id set is identical to autocorrect-engine's `dedup-ro.txt`, so the test 
 one used in earlier Bilingual Guard evals. Common Voice: 10,815 / 1,411 / 1,388 (77 duplicates).
 Wikimedia: by page-id hash, 94 / 3 / 3.
 
-**20:35-21:15 Wikitext extraction** (`tools/extract_wiki.py`): stream parse, strip markup
+**20:35-20:54 Wikitext extraction** (`tools/extract_wiki.py`): stream parse, strip markup
 (templates, tables, refs, files/categories/interwiki/user links, external links, quotes, tags,
 magic words, talk signatures), NFC + comma-below, Romanian sentence split with abbreviation list.
 Removed *inline* markup leaves a gap mark `¦`: word pairs never span it and dev/test sentences
@@ -77,7 +78,7 @@ user names and month names. Articles were re-extracted with the final code from 
   blind. Phase 2 candidate.
 - First commit 6916a30 (tooling + docs).
 
-**21:40 Held-out filter + counts.** `tools/heldout.py` over all 8 text sources. Training sentences
+**20:55 Held-out filter + counts.** `tools/heldout.py` over all 8 text sources. Training sentences
 whose near-duplicate key equals any dev/test key are dropped: wiki 243,941, talk 2,755,849 (subst'd
 welcome/warning templates repeated over ~1M user-talk pages), Tatoeba 49, others < 500. Kept:
 wiki 4,773,682 sentences / 100.3M tokens; talk 1,172,424 / 20.5M; Tatoeba 33,545 / 223k;
@@ -85,7 +86,7 @@ Common Voice 10,814 / 78k; Wikinews/-quote/-voyage/-books 11-13k sentences each 
 FrequencyWords ro_full: 1,075,681 types / 331.8M tokens after normalisation (cedilla and comma
 spellings summed; 153k entries with digits/apostrophes/other scripts rejected).
 
-**21:45-22:05 Word list** (`tools/wordlist.py`). Weights (share of the mixed relative frequency):
+**20:57-21:00 Word list** (`tools/wordlist.py`). Weights (share of the mixed relative frequency):
 FrequencyWords 0.45, Wikipedia 0.27, discussions 0.10, Tatoeba 0.08, Common Voice 0.03, other
 Wikimedia 0.07. Evidence filter: ≥ 3 occurrences; Hunspell-valid words pass (Wikipedia-only ones
 need 2+ articles); others need 2+ source groups (≥ 5 occurrences), or ≥ 50 in subtitles, or 10+
@@ -120,7 +121,7 @@ Conversational text saturates at ~100-150k (+0.2pp per extra 50k words); formal/
 keeps gaining ~0.7pp per 50k, almost all names. Discussion pages also contain many deliberately
 *removed* ASCII spellings (si, in, daca, dupa, stiu, sînt) — counted as "not covered" here by design.
 
-**22:05-22:35 Size decision** (`tools/size_sweep.py`, dev only, typo proxy, gaussian noise,
+**21:00-21:06 Size decision** (`tools/size_sweep.py`, dev only, typo proxy, gaussian noise,
 3 seeds × 600 sentences; `build/size-sweep.json`). Combined-mode word accuracy (%):
 
 | words | clex KB | Tatoeba plain/diac | CV plain/diac | talk plain/diac | Wiki plain/diac | English |
@@ -138,8 +139,92 @@ rates fall monotonically with size (fewer correctly typed rare words "corrected"
 words** — within 0.1-0.4pp of the conversational peak, +0.4-0.7pp on formal text vs 100k, 2.15 MB.
 `Lexicons/ro.clex` built by the official `vendor/build-pack.py` from `source/ro.txt`.
 
-**22:40 Next-word weights** (`tools/tune_ngrams.py`, dev, 3000 sentences per set, top-K 16,
+**21:10 Next-word weights** (`tools/tune_ngrams.py`, dev, 3000 sentences per set, top-K 16,
 min count 3; `build/tune-ngrams-weights.json`). Mean dev top-3 (+fallback) / after-1-letter:
 balanced (wiki .35, talk .2, Tatoeba .25, CV .1, other .1) 26.60 / 49.29; formal (wiki .55) 26.23 /
 49.12; chatty (Tatoeba .4) 26.40 / 49.09; plain pooled counts 24.92 / 47.60. → balanced. Unpruned
 at K16/m3 it is 813k pairs / 7.3 MB, so pruning is tuned next.
+
+**21:10-21:24 Next-word pruning and final model** (all on dev; `build/tune-ngrams-*.json`).
+- Grid K ∈ {3,6,10,16,32} × min count ∈ {2,3,5,10,20}: top-3 is nearly flat (26.0-26.6% from
+  0.7 MB to 14 MB); deeper follower lists drive "top-3 after the first letter" (41% at K3 → 53% at
+  K32). Official packs have follower blocks up to 4,312 long, so K is not engine-limited.
+- A raw min count prunes the small conversational sources first (Tatoeba top-3 −0.7pp at m20), so
+  a word's three most likely followers get a lower threshold (`--min-top`). Refined grid
+  K ∈ {64,128,256} × m ∈ {20,30,50} with top-3 threshold 5.
+- Common Voice ro turned out to be mostly Europarl-style parliamentary text ("Am votat în
+  favoarea…" 120× in 10.8k sentences → `am → votat` ranked 2nd). Its dev set rewards that
+  register. Lowering CV 0.10 → 0.03 improves Tatoeba (+0.2pp), discussions (+0.2pp) and Wikipedia
+  (+0.24pp) dev top-3 and loses only on CV's own dev (−1.8pp) → CV 0.03.
+- Corpus-artifact demotion (weight ×0.05 as a *follower*, only in the source that causes it):
+  Tatoeba's stock characters tom/mary/john (`că → tom`, `lui → tom, mary`) and Wikipedia
+  self-reference in discussions (`pe → wikipedia`, `la → pagina`, `un/acest → articol`). 6 of the
+  60 most frequent words had such an artifact in their top-3. Dev effect: Tatoeba −0.45pp and
+  discussions −1.1pp (both sets contain those very artifacts), Wikipedia +0.1pp, CV +0.2pp. Kept,
+  because every user would see them. Remaining known artifact: `o → comună, suprafață` from
+  templated village stubs (Phase 2: template-aware down-weighting).
+- **Final:** weights wiki .37, talk .22, Tatoeba .28, CV .03, Wikinews .04, Wikiquote .03,
+  Wikivoyage .02, Wikibooks .01; K 256, min count 50, top-3 min count 5, demotion on →
+  **304,831 pairs, 2,743,491 bytes** (100,360 previous words). Dev mean top-3 26.0%, after 1
+  letter 52.0%. `vendor/tools/validate-pack.py ro` → "ro: looks ready for release."
+- Commit f1bf032 (pack + build reports).
+
+**21:24-21:33 First test run → one regression found → fixed (decided on dev, not test).**
+The first held-out run (f1bf032) showed Romanian Pro *keeping* asa, tara, maine as typed (the
+published pack restores așa, țară, mâine) and restoring fewer accents than the published pack when
+the pack is used alone. Cause: the share-in-diacritic-text evidence for the clean_ro_pack rules
+came from all sources. In Wikipedia the ASCII forms are mostly proper nouns (Maine, Asa, Tara), and
+discussion-page writers mix plain and diacritic spellings in one sentence (asa 859× beside
+așa 45,099×), so asa/maine passed the 1% threshold. Fix: evidence counts only lower-case uses,
+and only from edited/curated text (Wikipedia articles, Tatoeba, Common Voice, other Wikimedia
+projects; not discussions, not subtitles). 445 words changed (asa, tara, maine, putin, paine,
+multi, rand, cat, ii, sa-i, sa-mi, mi-as … removed; buna, casa, masa, luna, the KEEP set stay).
+Dev check (`build/dev-evidence-fix.json`, 3 seeds × 800 sentences, gaussian): no-diacritics
+typing, pack alone: Tatoeba 84.61 → 85.64, CV 83.94 → 84.82, discussions 81.06 → 81.94,
+Wikipedia 87.41 → 87.88 (published: 84.41 / 84.08 / 78.66 / 84.47); accent restoration +3-5pp;
+with-diacritics typing −0.03 to −0.4pp. Pair counts redone on the new superset; `ro.clex`
+rebuilt (official builder), `ro.cngm` rebuilt with the same tuned settings: 304,288 pairs,
+2,738,604 bytes; validator OK.
+- Decontaminated control for the Tatoeba next-word comparison: the published pack's `ro.cngm` is
+  byte-reproducible, so it was rebuilt with the official `build-next-word.py` from Tatoeba *train*
+  sentences only (`work/control/pubtrain.cngm`, 76,088 pairs).
+- Final word-list statistics (`build/wordlist-report.json`): 2,027,897 types → 762,728 with ≥ 3
+  occurrences → 452,343 after the evidence filter → 425,096 after diacritic cleaning (20,036
+  invalid ASCII spellings, 2,151 valid-but-dominated, 3,903 partial-diacritic, 1,157 old-orthography
+  removed; 5,066 valid ASCII words re-weighted) → top 150,000. 40,965 (27%) are proper nouns
+  (≥ 90% capitalised mid-sentence; stored lower-case), 16,801 are English-spelled words not in
+  Hunspell (mostly names; target loanwords ok, weekend, laptop, e-mail, site, like, deadline, update,
+  meeting, online, job, feedback are all in).
+- Evaluation harness parallelised (fork pool); sets smaller than the sample (Common Voice for
+  next-word) are bootstrap-resampled per seed so the interval is not degenerate.
+
+**21:35 Final held-out test evaluation** (`build/eval-test.json`, `EVAL.md`; 5 seeds ×
+1,000 sentences per set for typos, 2,000 for next word; paired 95% CIs). Highlights:
+- Coverage: Pro 99.43 / 95.61 / 94.27 / 99.13% (Tatoeba / Wikipedia / discussions / CV) vs
+  official 96.30 / 80.99 / 86.95 / 93.82 and published 94.57 / 88.63 / 89.95 / 95.86.
+- Typo proxy, Combined, Gaussian, no diacritics: Tatoeba 80.2 ± 0.8 vs 69.6 / 79.2 (Δ +10.6 ± 0.2,
+  +1.0 ± 0.3); Wikipedia 81.2 vs 68.0 / 78.1; discussions 79.7 vs 69.9 / 78.2; CV 80.5 vs 70.0 / 79.1.
+  All Romanian rows (2 noise models × Combined/alone × 4 sets × 2 typing modes = 32) are significant
+  gains over both baselines. Wrong-change rate lower everywhere (1 row n.s. vs official).
+  English (Combined): 93.8 vs 93.7 / 93.6, wrong changes 2.4 vs 3.0 / 3.0.
+- Next-word top-3 (+fallback): Wikipedia 24.7 vs 12.8 / 15.5; discussions 26.4 vs 15.4 / 15.6;
+  CV 26.2 vs 21.1 / 21.3. Tatoeba 26.2 vs 31.4 / 35.1 — contaminated baselines; decontaminated
+  published rebuild 25.6 ± 0.6 (after-1-letter 54.8 vs Pro 53.2).
+- Remaining weak spots: KEEP words (sa ca fata pana ma) never restored by the dictionary alone;
+  `buna` kept as a valid word (published restores bună); `o → comună, suprafață` stub artifact.
+
+## Blockers / open items (none blocking Phase 1)
+
+- No neural model: `tools/train-neural.py` needs macOS + coremltools to produce `ro.mlmodelc`.
+  The official pack's neural ranker is therefore not matched, and not measurable here.
+- All numbers are from an offline dictionary-corrector proxy and offline CNGM decoding; on-device
+  verification in Clink (Combined mode + Bilingual Guard 1.1) is needed before publishing.
+- `CBOS` sentence-start metadata not written (undocumented effect on casing/swipe).
+- Licence caveats recorded in SOURCES.md: FrequencyWords' upstream (OpenSubtitles) text licence is
+  not stated by OPUS; Common Voice sentence-collector text relies on Mozilla's CC0 statement while
+  many sentences look Europarl-derived. Both were accepted as instructed / as licensed by the
+  publisher; a release review may want to re-check them.
+- Publishing would require: a GitHub repo/release (not done; out of scope for Phase 1), the
+  release manifest from the official workflow, and a decision on how the CC BY-SA files and the
+  Clink-licensed `ro.emoji.json` are presented together (separate licences are documented in
+  `Lexicons/LICENSE`).

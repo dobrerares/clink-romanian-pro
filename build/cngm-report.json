@@ -1,8 +1,8 @@
 {
- "pairs": 304831,
- "bytes": 2743491,
- "previous_words": 100360,
- "candidate_pairs": 13068254,
+ "pairs": 304288,
+ "bytes": 2738604,
+ "previous_words": 100156,
+ "candidate_pairs": 13034189,
  "top_k": 256,
  "min_count": 50,
  "min_top": 5,

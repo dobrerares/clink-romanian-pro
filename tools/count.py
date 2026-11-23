@@ -6,8 +6,8 @@ Usage: count.py SOURCE [SOURCE ...]     (text sources: work/train/<source>.txt)
 
 Writes work/counts/<source>.tsv: word, count, documents, mid-sentence occurrences,
 mid-sentence capitalised occurrences (proper-noun evidence; the CLEX builder lower-cases
-everything, so case only informs filtering), occurrences in sentences written with diacritics
-(evidence for the clean_ro_pack rules), sorted by count.
+everything, so case only informs filtering), lower-case occurrences in sentences written with
+diacritics (evidence for the clean_ro_pack rules), sorted by count.
 A word is lower-case NFC Romanian/English letters with optional internal hyphens
 (common.WORD_OK); tokens with digits, apostrophes or other scripts are not words.
 """
@@ -39,7 +39,9 @@ def count_chunk(lines):
             if not WORD_OK.fullmatch(low):
                 continue
             cnt[low] += 1
-            if has_diac:
+            if has_diac and tok[0].islower():
+                # evidence for the diacritic rules: lower-case uses only, so names written without
+                # diacritics (Maine, Asa, Tara) do not count as uses of maine/asa/tara
                 diac[low] += 1
             doc_words.add(low)
             if i > 0:

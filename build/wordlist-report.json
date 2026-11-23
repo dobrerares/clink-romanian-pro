@@ -67,19 +67,19 @@
   "valid but only in one Wikimedia article": 1722
  },
  "diacritic_cleaning": {
-  "kept_little_evidence": 4993,
-  "kept_reduced": 6087,
+  "kept_little_evidence": 6410,
+  "kept_reduced": 5066,
   "removed_invalid": 20036,
   "kept_invalid_siblings_rarer": 1447,
-  "kept_unchanged": 1939,
-  "removed_dominated": 1678,
-  "removed_partial_diacritics": 3899,
+  "removed_dominated": 2151,
+  "kept_unchanged": 1070,
+  "removed_partial_diacritics": 3903,
   "removed_old_orthography": 1157
  },
- "after_cleaning": 425573,
+ "after_cleaning": 425096,
  "size": 150000,
- "proper_nouns_in_list (>=90% capitalised mid-sentence)": 40953,
- "english_spelled_not_hunspell_in_list": 16773,
+ "proper_nouns_in_list (>=90% capitalised mid-sentence)": 40965,
+ "english_spelled_not_hunspell_in_list": 16801,
  "keep": [
   "ca",
   "fata",

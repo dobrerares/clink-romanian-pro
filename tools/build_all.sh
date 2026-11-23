@@ -19,15 +19,21 @@ $PY tools/heldout.py wiki wikitalk tatoeba cv wikinews wikiquote wikivoyage wiki
 
 # 3. word counts and the word list (source/ro.txt)
 $PY tools/count.py freqwords wiki wikitalk tatoeba cv wikinews wikiquote wikivoyage wikibooks
-$PY tools/wordlist.py --curve --size "${SIZE:-150000}"
+$PY tools/wordlist.py --curve --size 150000   # size from tools/size_sweep.py (dev)
 
 # 4. dictionary with the official builder
 $PY vendor/build-pack.py ro source/ro.txt
 
 # 5. next-word model: pair counts over the ranked superset, then the tuned configuration
 $PY tools/ngrams.py count build/ranked-superset.txt wiki wikitalk tatoeba cv wikinews wikiquote wikivoyage wikibooks
-$PY tools/ngrams.py build source/ro.txt Lexicons/ro.cngm --weights "${NGRAM_WEIGHTS}" \
-    --top-k "${TOP_K}" --min-count "${MIN_COUNT}" --report build/cngm-report.json
+#    (weights, K, min counts and demotion tuned on dev: see LOG.md and build/tune-ngrams-*.json)
+$PY tools/ngrams.py build source/ro.txt Lexicons/ro.cngm \
+    --weights wiki=0.37,wikitalk=0.22,tatoeba=0.28,cv=0.03,wikinews=0.04,wikiquote=0.03,wikivoyage=0.02,wikibooks=0.01 \
+    --top-k 256 --min-count 50 --min-top 5 --demote --report build/cngm-report.json
 
 # 6. validate with the official validator
 $PY vendor/tools/validate-pack.py ro
+
+# 7. held-out evaluation against the official and published packs (EVAL.md)
+$PY tools/evaluate.py --split test --seeds 1,2,3,4,5 --n 1000 --n-next 2000 --out build/eval-test
+$PY tools/report.py build/eval-test.json

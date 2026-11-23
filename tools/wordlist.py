@@ -43,6 +43,10 @@ GROUPS = {  # source file -> (group, weight)
     "wikivoyage": ("other", 0.07 * 0.20),
     "wikibooks": ("other", 0.07 * 0.20),
 }
+# Diacritic-rule evidence comes from edited/curated text only. Discussion pages are excluded: their
+# writers mix plain and diacritic spellings within one sentence (asa 859x next to așa 45,099x), so
+# "this sentence has diacritics" does not mean "this writer uses them".
+EVIDENCE_EXCLUDE = {"wikitalk", "freqwords"}
 # clean_ro_pack.py constants (unchanged)
 KEEP = {"sa", "ca", "fata", "pana", "ma"}
 MIN_SHARE = 0.01
@@ -129,7 +133,8 @@ def main():
             docs[w] += dc
             mid[w] += m
             cap[w] += cp
-            diac_ev[w] += dv
+            if src not in EVIDENCE_EXCLUDE:
+                diac_ev[w] += dv
     print(f"{len(score):,} word types in {len(per)} sources; weights {json.dumps({k: round(v, 4) for k, v in weights.items()})}",
           flush=True)
 
