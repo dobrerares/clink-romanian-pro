@@ -213,6 +213,12 @@ rebuilt (official builder), `ro.cngm` rebuilt with the same tuned settings: 304,
 - Remaining weak spots: KEEP words (sa ca fata pana ma) never restored by the dictionary alone;
   `buna` kept as a valid word (published restores bună); `o → comună, suprafață` stub artifact.
 
+**21:40 Commits** (local only, author Daedalus <daedalus@localhost>, nothing pushed):
+6916a30 tooling + docs; f1bf032 first pack build; 9cbb6d9 evidence fix, final pack, EVAL.md;
+followed by this log update. Final pack SHA-256: ro.clex 4d08a8b1…4c4121,
+ro.cngm 9cc0af4b…28ca9be. Read-only use of upstream/, clink-romanian-language/ and
+autocorrect-engine/ (copies only); nothing under ~/.hermes or the other listed repos was modified.
+
 ## Blockers / open items (none blocking Phase 1)
 
 - No neural model: `tools/train-neural.py` needs macOS + coremltools to produce `ro.mlmodelc`.
