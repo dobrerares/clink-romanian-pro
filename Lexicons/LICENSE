@@ -1,0 +1,31 @@
+Romanian Pro — licences of the files in this directory
+=======================================================
+
+ro.clex, ro.cngm (and source/ro.txt)
+------------------------------------
+Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0),
+https://creativecommons.org/licenses/by-sa/4.0/
+
+These files are adaptations (word frequencies and word-pair probabilities, filtered, merged,
+quantised and encoded in the CLEX1 / CNGM1 formats) of:
+
+  * FrequencyWords by Hermit Dave, https://github.com/hermitdave/FrequencyWords, content
+    CC BY-SA 4.0 (Romanian 2018 list, derived from OpenSubtitles 2018, opus.nlpl.eu;
+    P. Lison and J. Tiedemann, LREC 2016).
+  * Romanian Wikipedia (articles and discussion pages), Wikiquote, Wikivoyage and Wikibooks,
+    dumps of 2026-11-01, © their contributors, CC BY-SA 4.0 / GFDL.
+  * Romanian Wikinews, dump of 2026-11-01, © Wikinews contributors, CC BY 2.5.
+  * Tatoeba Romanian sentences, https://tatoeba.org, © Tatoeba contributors, CC BY 2.0 FR.
+  * Mozilla Common Voice Romanian sentence-collector text, CC0 1.0.
+
+Changes: text extracted from wikitext; Unicode NFC and comma-below normalisation; sentence
+splitting; held-out data removed; words counted, filtered, merged with documented weights,
+cleaned of diacritic-less misspellings, ranked and cut to 150,000 words; word pairs counted,
+mixed, pruned and quantised. No sentence text is included. No endorsement by any source is implied.
+Hunspell ro_RO (rospell) was used only as a yes/no check at build time; none of its data is included.
+
+ro.emoji.json
+-------------
+Copied unchanged from https://github.com/anti-ltd/clink-language-packs (Lexicons/ro.emoji.json),
+© 2026 Anti Limited and contributors, under the Clink Community Assets License 1.0
+(see vendor/CLINK-COMMUNITY-ASSETS-LICENSE.md). It is not covered by the CC BY-SA licence above.

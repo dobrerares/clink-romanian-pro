@@ -63,11 +63,19 @@ EN_FUNCTION = {"the", "and", "of", "to", "you", "is", "was", "were", "it", "its"
                "our", "their", "them", "what", "who", "how", "why", "when", "where", "which", "be", "been",
                "being", "have", "has", "had", "does", "did", "not", "an", "or", "at", "by", "from", "but",
                "if", "than", "then", "there", "here", "will", "would", "can", "could", "should", "shall",
-               "may", "might", "must", "just", "all", "any", "some", "no", "yes", "up", "out", "about",
+               "may", "might", "must", "just", "all", "any", "some", "yes", "up", "out", "about",
                "into", "over", "after", "before", "because", "so", "too", "very", "i", "am", "us", "off",
                "of", "s", "t", "don", "doesn", "didn", "isn", "aren", "wasn", "won", "can't", "let", "get",
-               "got", "go", "going", "know", "see", "come", "want", "like", "one", "two", "three"}
-ROMAN = re.compile(r"m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3})(-lea|-a)?")
+               "got", "go", "going", "know", "see", "come", "want", "one", "two", "three"}
+# not in the list on purpose: "like" (dă-i like), "no" (colloquial "no, bine"), "ok", "hey", "wow"
+ROMAN = re.compile(r"m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3})(-lea)?")
+# "a XIX-a" ordinals; the numeral must have 2+ letters incl. x or v so clitics (mi-a, l-a, v-a) never match
+ROMAN_A = re.compile(r"(?=[ivxlcdm]*[xv])[ivxlcdm]{2,}-a")
+# Fragments that occur only inside hyphenated forms (s-a, n-am, l-am, dă-mi, într-o, weekend-ul).
+CLITIC_PARTS = {"s", "n", "l", "m", "v", "i", "ți", "mi", "îți", "îmi", "îl", "îi", "ți", "și", "ul", "ului",
+                "urile", "urilor", "uri", "lea", "ntr", "dintr", "printr", "într", "dintr", "dint", "o", "un"}
+# real words/units that happen to spell a Roman numeral
+ROMAN_WORDS = {"mix", "cd", "mi", "vi", "cm", "mm", "ml", "dl", "cl", "mc", "dc", "lc", "di", "id", "xl"}
 SINGLE_OK = {"a", "o", "e", "i", "î"}
 TRIPLE = re.compile(r"([a-zăâîșț])\1\1")
 
@@ -129,7 +137,16 @@ def main():
     cand = [w for w in score if raw[w] >= 3]
     hv_raw = hunspell_valid(cand + [w.capitalize() for w in cand])
     hv = {w for w in cand if w in hv_raw or w.capitalize() in hv_raw}
-    print(f"{len(cand):,} candidates with >= 3 occurrences; Hunspell accepts {len(hv):,}", flush=True)
+    n_whole = len(hv)
+    # Hunspell rejects almost every hyphenated clitic form (s-a, mi-a, să-ți, într-o). A hyphenated
+    # word counts as valid when every part is a Hunspell word or a known clitic/suffix fragment,
+    # so the diacritic rules also catch sa-ti / să-ti next to să-ți.
+    parts = sorted({x for w in cand if "-" in w for x in w.split("-") if x})
+    hv_parts_raw = hunspell_valid(parts + [x.capitalize() for x in parts])
+    ok_part = {x for x in parts if x in hv_parts_raw or x.capitalize() in hv_parts_raw} | CLITIC_PARTS
+    hv |= {w for w in cand if "-" in w and all(x in ok_part for x in w.split("-"))}
+    print(f"{len(cand):,} candidates with >= 3 occurrences; Hunspell accepts {n_whole:,} whole words "
+          f"+ {len(hv) - n_whole:,} hyphenated forms by parts", flush=True)
     en_words = set(Clex(UPSTREAM_EN).words)
 
     reasons = Counter()
@@ -139,8 +156,6 @@ def main():
             return None, "fewer than 3 occurrences"
         if len(w) > 30:
             return None, "longer than 30 letters"
-        if w in MARKUP:
-            return None, "markup/web token"
         if len(w) == 1 and w not in SINGLE_OK:
             return None, "single letter"
         if w.startswith("-") or w.endswith("-") or "--" in w:
@@ -148,7 +163,9 @@ def main():
         if TRIPLE.search(w) and "iii" not in w:
             return None, "letter repeated 3+ times (elongation/noise)"
         valid = w in hv
-        if not valid and ROMAN.fullmatch(w):
+        if not valid and w in MARKUP:
+            return None, "markup/web token"
+        if not valid and w not in ROMAN_WORDS and (ROMAN.fullmatch(w) or (ROMAN_A.fullmatch(w) and ROMAN.fullmatch(w[:-2]))):
             return None, "Roman numeral"
         if not valid and w in EN_FUNCTION:
             return None, "English function word"

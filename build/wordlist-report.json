@@ -1,0 +1,94 @@
+{
+ "sources": {
+  "freqwords": {
+   "tokens": 331829486,
+   "types": 1075681,
+   "weight": 0.45
+  },
+  "wiki": {
+   "tokens": 100330838,
+   "types": 1226521,
+   "weight": 0.27
+  },
+  "wikitalk": {
+   "tokens": 20520415,
+   "types": 321503,
+   "weight": 0.1
+  },
+  "tatoeba": {
+   "tokens": 222531,
+   "types": 19715,
+   "weight": 0.08
+  },
+  "cv": {
+   "tokens": 78204,
+   "types": 10629,
+   "weight": 0.03
+  },
+  "wikinews": {
+   "tokens": 255892,
+   "types": 26899,
+   "weight": 0.0245
+  },
+  "wikiquote": {
+   "tokens": 173701,
+   "types": 26130,
+   "weight": 0.0175
+  },
+  "wikivoyage": {
+   "tokens": 162213,
+   "types": 23928,
+   "weight": 0.014
+  },
+  "wikibooks": {
+   "tokens": 265158,
+   "types": 27918,
+   "weight": 0.014
+  }
+ },
+ "candidates_3plus": 762728,
+ "hunspell_valid": 264613,
+ "evidence_kept": 452343,
+ "evidence_kept_by": {
+  "hunspell-valid": 262866,
+  "2+ source groups": 174470,
+  "frequent in subtitles": 4120,
+  "10+ documents": 10887
+ },
+ "evidence_dropped_by": {
+  "single letter": 26,
+  "English function word": 85,
+  "letter repeated 3+ times (elongation/noise)": 980,
+  "markup/web token": 40,
+  "Roman numeral": 150,
+  "not in Hunspell and too little independent evidence": 307339,
+  "longer than 30 letters": 43,
+  "fewer than 3 occurrences": 1265169,
+  "valid but only in one Wikimedia article": 1722
+ },
+ "diacritic_cleaning": {
+  "kept_little_evidence": 4993,
+  "kept_reduced": 6087,
+  "removed_invalid": 20036,
+  "kept_invalid_siblings_rarer": 1447,
+  "kept_unchanged": 1939,
+  "removed_dominated": 1678,
+  "removed_partial_diacritics": 3899,
+  "removed_old_orthography": 1157
+ },
+ "after_cleaning": 425573,
+ "size": 150000,
+ "proper_nouns_in_list (>=90% capitalised mid-sentence)": 40953,
+ "english_spelled_not_hunspell_in_list": 16773,
+ "keep": [
+  "ca",
+  "fata",
+  "ma",
+  "pana",
+  "sa"
+ ],
+ "min_share": 0.01,
+ "min_evidence": 40,
+ "min_evidence_share": 20,
+ "dominate": 1.0
+}

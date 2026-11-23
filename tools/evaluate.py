@@ -37,6 +37,7 @@ import argparse
 import bz2
 import json
 import math
+import multiprocessing as mp
 import random
 import re
 import statistics
@@ -188,6 +189,7 @@ def typo_run(sents, lang, mode, noise_mode, seed, correctors, sigma=0.22, err=0.
 
 
 def summarize_typo(st):
+    st = defaultdict(int, st)
     w = st["words"] or 1
     r = {"word_acc": st["ok"] / w, "wrong_change": st["wrong_change"] / w}
     if st["clean"]:
@@ -242,6 +244,16 @@ def diacless(packs, en):
 
 
 # ------------------------------------------------------------------ main
+_CTX = {}
+
+
+def _typo_job(job):
+    noise_mode, cfg, setname, mode, seed = job
+    sents = sample(_CTX["sets"][setname], _CTX["n"], seed)
+    st = typo_run(sents, "en" if setname == "english" else "ro", mode, noise_mode, seed, _CTX["corr"][cfg])
+    return {k: dict(v) for k, v in st.items()}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--split", default="test")
@@ -253,6 +265,7 @@ def main():
     ap.add_argument("--sets", default=",".join(SETS))
     ap.add_argument("--noise", default="gaussian,realistic")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--workers", type=int, default=6)
     args = ap.parse_args()
     specs = dict(kv.split("=", 1) for kv in args.pack) if args.pack else {k: str(v) for k, v in DEFAULT_PACKS.items()}
     packs = [Pack(n, p) for n, p in specs.items()]
@@ -267,37 +280,46 @@ def main():
         out["coverage"] = coverage(packs, sets)
         print(json.dumps(out["coverage"]), flush=True)
     if "typo" in tasks:
+        global _CTX
         corr = {"ro": {p.name: DictCorrector(p.freq) for p in packs},
                 "combined": {p.name: DictCorrector(p.freq, en) for p in packs}}
         english = load_english(args.split)
-        res = {}
+        jobs = []
         for noise_mode in args.noise.split(","):
-            for cfg, cs in corr.items():
+            for cfg in corr:
                 for setname in list(sets) + ["english"]:
-                    modes = ["en"] if setname == "english" else ["ro_plain", "ro_diac"]
                     if setname == "english" and cfg == "ro":
                         continue
-                    for mode in modes:
-                        per_seed = defaultdict(list)
+                    for mode in (["en"] if setname == "english" else ["ro_plain", "ro_diac"]):
                         for seed in seeds:
-                            src = english if setname == "english" else sets[setname]
-                            sents = sample(src, args.n, seed)
-                            st = typo_run(sents, "en" if setname == "english" else "ro", mode, noise_mode, seed, cs)
-                            for p in cs:
-                                for k, v in summarize_typo(st[p]).items():
-                                    per_seed[(p, k)].append(v)
-                            per_seed[("_", "words")].append(st[packs[0].name]["words"])
-                        key = f"{noise_mode}/{cfg}/{setname}/{mode}"
-                        res[key] = {}
-                        for (p, k), vals in per_seed.items():
-                            m, h = ci(vals)
-                            res[key].setdefault(p, {})[k] = [round(m, 5), round(h, 5)]
-                        for base in ("official", "published"):
-                            if base in cs and "pro" in cs:
-                                d = [a - b for a, b in zip(per_seed[("pro", "word_acc")], per_seed[(base, "word_acc")])]
-                                m, h = ci(d)
-                                res[key][f"pro_minus_{base}_word_acc"] = [round(m, 5), round(h, 5)]
-                        print(key, json.dumps(res[key]), flush=True)
+                            jobs.append((noise_mode, cfg, setname, mode, seed))
+        _CTX = {"corr": corr, "sets": dict(sets, english=english), "n": args.n}
+        # fork: workers share the correctors built above (copy-on-write)
+        with mp.get_context("fork").Pool(args.workers) as pool:
+            done = pool.map(_typo_job, jobs, chunksize=1)
+        grouped = defaultdict(list)
+        for job, st in zip(jobs, done):
+            grouped[job[:4]].append(st)
+        res = {}
+        for (noise_mode, cfg, setname, mode), sts in grouped.items():
+            per_seed = defaultdict(list)
+            for st in sts:
+                for pk in st:
+                    for k, v in summarize_typo(st[pk]).items():
+                        per_seed[(pk, k)].append(v)
+                per_seed[("_", "words")].append(st[packs[0].name]["words"])
+            key = f"{noise_mode}/{cfg}/{setname}/{mode}"
+            res[key] = {}
+            for (pk, k), vals in per_seed.items():
+                m, h = ci(vals)
+                res[key].setdefault(pk, {})[k] = [round(m, 5), round(h, 5)]
+            for base in ("official", "published"):
+                if base in corr[cfg] and "pro" in corr[cfg]:
+                    for k in ("word_acc", "wrong_change"):
+                        d = [a - b for a, b in zip(per_seed[("pro", k)], per_seed[(base, k)])]
+                        m, h = ci(d)
+                        res[key][f"pro_minus_{base}_{k}"] = [round(m, 5), round(h, 5)]
+            print(key, json.dumps(res[key]), flush=True)
         out["typo"] = res
     if "next" in tasks:
         res = {}

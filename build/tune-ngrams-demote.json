@@ -1,0 +1,38 @@
+[
+ {
+  "cfg": "cvlow-k256-m50-t5",
+  "weights": "cvlow",
+  "top_k": 256,
+  "min_count": 50,
+  "pairs": 305070,
+  "bytes": 2745642,
+  "tatoeba.top3": 0.2697,
+  "tatoeba.after1": 0.5466,
+  "cv.top3": 0.2616,
+  "cv.after1": 0.5393,
+  "wikitalk.top3": 0.271,
+  "wikitalk.after1": 0.5289,
+  "wiki.top3": 0.2483,
+  "wiki.after1": 0.4772,
+  "mean.top3": 0.2626,
+  "mean.after1": 0.523
+ },
+ {
+  "cfg": "cvlow-k256-m50-t5-demote",
+  "weights": "cvlow",
+  "top_k": 256,
+  "min_count": 50,
+  "pairs": 304831,
+  "bytes": 2743491,
+  "tatoeba.top3": 0.2652,
+  "tatoeba.after1": 0.5419,
+  "cv.top3": 0.2637,
+  "cv.after1": 0.5398,
+  "wikitalk.top3": 0.26,
+  "wikitalk.after1": 0.52,
+  "wiki.top3": 0.2493,
+  "wiki.after1": 0.4783,
+  "mean.top3": 0.2596,
+  "mean.after1": 0.52
+ }
+]

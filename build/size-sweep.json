@@ -1,0 +1,914 @@
+[
+ {
+  "size": 50000,
+  "clex_bytes": 705184,
+  "combined/tatoeba/ro_plain": {
+   "word_acc": 0.8067,
+   "wrong_change": 0.0368,
+   "clean_broken": 0.0073,
+   "typo_fixed": 0.5782,
+   "accent_fixed": 0.4707
+  },
+  "combined/tatoeba/ro_diac": {
+   "word_acc": 0.9381,
+   "wrong_change": 0.0345,
+   "clean_broken": 0.0082,
+   "typo_fixed": 0.5782
+  },
+  "combined/cv/ro_plain": {
+   "word_acc": 0.8046,
+   "wrong_change": 0.0353,
+   "clean_broken": 0.0048,
+   "typo_fixed": 0.6354,
+   "accent_fixed": 0.4481
+  },
+  "combined/cv/ro_diac": {
+   "word_acc": 0.939,
+   "wrong_change": 0.0337,
+   "clean_broken": 0.0083,
+   "typo_fixed": 0.6354
+  },
+  "combined/wikitalk/ro_plain": {
+   "word_acc": 0.7648,
+   "wrong_change": 0.0682,
+   "clean_broken": 0.0343,
+   "typo_fixed": 0.5194,
+   "accent_fixed": 0.4158
+  },
+  "combined/wikitalk/ro_diac": {
+   "word_acc": 0.8905,
+   "wrong_change": 0.0684,
+   "clean_broken": 0.0432,
+   "typo_fixed": 0.5194
+  },
+  "combined/wiki/ro_plain": {
+   "word_acc": 0.7938,
+   "wrong_change": 0.0555,
+   "clean_broken": 0.0335,
+   "typo_fixed": 0.5474,
+   "accent_fixed": 0.4653
+  },
+  "combined/wiki/ro_diac": {
+   "word_acc": 0.9036,
+   "wrong_change": 0.055,
+   "clean_broken": 0.032,
+   "typo_fixed": 0.5474
+  },
+  "combined/english/en": {
+   "word_acc": 0.9381,
+   "wrong_change": 0.0291,
+   "clean_broken": 0.0029,
+   "typo_fixed": 0.5419
+  },
+  "ro/tatoeba/ro_plain": {
+   "word_acc": 0.8452,
+   "wrong_change": 0.0372,
+   "clean_broken": 0.0079,
+   "typo_fixed": 0.6038,
+   "accent_fixed": 0.6111
+  },
+  "ro/tatoeba/ro_diac": {
+   "word_acc": 0.941,
+   "wrong_change": 0.0345,
+   "clean_broken": 0.0085,
+   "typo_fixed": 0.6038
+  },
+  "ro/cv/ro_plain": {
+   "word_acc": 0.8422,
+   "wrong_change": 0.036,
+   "clean_broken": 0.0054,
+   "typo_fixed": 0.6532,
+   "accent_fixed": 0.5888
+  },
+  "ro/cv/ro_diac": {
+   "word_acc": 0.9413,
+   "wrong_change": 0.0339,
+   "clean_broken": 0.0087,
+   "typo_fixed": 0.6532
+  },
+  "ro/wikitalk/ro_plain": {
+   "word_acc": 0.7948,
+   "wrong_change": 0.0773,
+   "clean_broken": 0.0504,
+   "typo_fixed": 0.5426,
+   "accent_fixed": 0.5656
+  },
+  "ro/wikitalk/ro_diac": {
+   "word_acc": 0.8847,
+   "wrong_change": 0.0767,
+   "clean_broken": 0.0541,
+   "typo_fixed": 0.5426
+  },
+  "ro/wiki/ro_plain": {
+   "word_acc": 0.858,
+   "wrong_change": 0.0584,
+   "clean_broken": 0.0396,
+   "typo_fixed": 0.5759,
+   "accent_fixed": 0.7595
+  },
+  "ro/wiki/ro_diac": {
+   "word_acc": 0.9045,
+   "wrong_change": 0.0572,
+   "clean_broken": 0.036,
+   "typo_fixed": 0.5759
+  }
+ },
+ {
+  "size": 75000,
+  "clex_bytes": 1066394,
+  "combined/tatoeba/ro_plain": {
+   "word_acc": 0.8075,
+   "wrong_change": 0.0344,
+   "clean_broken": 0.0053,
+   "typo_fixed": 0.5828,
+   "accent_fixed": 0.4667
+  },
+  "combined/tatoeba/ro_diac": {
+   "word_acc": 0.9408,
+   "wrong_change": 0.0319,
+   "clean_broken": 0.0057,
+   "typo_fixed": 0.5828
+  },
+  "combined/cv/ro_plain": {
+   "word_acc": 0.805,
+   "wrong_change": 0.0333,
+   "clean_broken": 0.004,
+   "typo_fixed": 0.6395,
+   "accent_fixed": 0.4454
+  },
+  "combined/cv/ro_diac": {
+   "word_acc": 0.9419,
+   "wrong_change": 0.0315,
+   "clean_broken": 0.0057,
+   "typo_fixed": 0.6395
+  },
+  "combined/wikitalk/ro_plain": {
+   "word_acc": 0.7703,
+   "wrong_change": 0.066,
+   "clean_broken": 0.0312,
+   "typo_fixed": 0.5292,
+   "accent_fixed": 0.4241
+  },
+  "combined/wikitalk/ro_diac": {
+   "word_acc": 0.8944,
+   "wrong_change": 0.066,
+   "clean_broken": 0.0404,
+   "typo_fixed": 0.5292
+  },
+  "combined/wiki/ro_plain": {
+   "word_acc": 0.8025,
+   "wrong_change": 0.0502,
+   "clean_broken": 0.0281,
+   "typo_fixed": 0.5701,
+   "accent_fixed": 0.4736
+  },
+  "combined/wiki/ro_diac": {
+   "word_acc": 0.9124,
+   "wrong_change": 0.0494,
+   "clean_broken": 0.0257,
+   "typo_fixed": 0.5701
+  },
+  "combined/english/en": {
+   "word_acc": 0.9382,
+   "wrong_change": 0.0283,
+   "clean_broken": 0.0025,
+   "typo_fixed": 0.5401
+  },
+  "ro/tatoeba/ro_plain": {
+   "word_acc": 0.8457,
+   "wrong_change": 0.0338,
+   "clean_broken": 0.0061,
+   "typo_fixed": 0.6063,
+   "accent_fixed": 0.6074
+  },
+  "ro/tatoeba/ro_diac": {
+   "word_acc": 0.9433,
+   "wrong_change": 0.0309,
+   "clean_broken": 0.0063,
+   "typo_fixed": 0.6063
+  },
+  "ro/cv/ro_plain": {
+   "word_acc": 0.8423,
+   "wrong_change": 0.0334,
+   "clean_broken": 0.0047,
+   "typo_fixed": 0.6558,
+   "accent_fixed": 0.5861
+  },
+  "ro/cv/ro_diac": {
+   "word_acc": 0.9439,
+   "wrong_change": 0.0311,
+   "clean_broken": 0.0061,
+   "typo_fixed": 0.6558
+  },
+  "ro/wikitalk/ro_plain": {
+   "word_acc": 0.7998,
+   "wrong_change": 0.0747,
+   "clean_broken": 0.0469,
+   "typo_fixed": 0.5477,
+   "accent_fixed": 0.5739
+  },
+  "ro/wikitalk/ro_diac": {
+   "word_acc": 0.8877,
+   "wrong_change": 0.0739,
+   "clean_broken": 0.0515,
+   "typo_fixed": 0.5477
+  },
+  "ro/wiki/ro_plain": {
+   "word_acc": 0.8669,
+   "wrong_change": 0.0516,
+   "clean_broken": 0.0324,
+   "typo_fixed": 0.5932,
+   "accent_fixed": 0.7674
+  },
+  "ro/wiki/ro_diac": {
+   "word_acc": 0.9134,
+   "wrong_change": 0.0502,
+   "clean_broken": 0.0288,
+   "typo_fixed": 0.5932
+  }
+ },
+ {
+  "size": 100000,
+  "clex_bytes": 1426422,
+  "combined/tatoeba/ro_plain": {
+   "word_acc": 0.8082,
+   "wrong_change": 0.0328,
+   "clean_broken": 0.005,
+   "typo_fixed": 0.5833,
+   "accent_fixed": 0.4684
+  },
+  "combined/tatoeba/ro_diac": {
+   "word_acc": 0.9418,
+   "wrong_change": 0.0304,
+   "clean_broken": 0.0046,
+   "typo_fixed": 0.5833
+  },
+  "combined/cv/ro_plain": {
+   "word_acc": 0.8055,
+   "wrong_change": 0.0311,
+   "clean_broken": 0.0032,
+   "typo_fixed": 0.6401,
+   "accent_fixed": 0.4453
+  },
+  "combined/cv/ro_diac": {
+   "word_acc": 0.9434,
+   "wrong_change": 0.0294,
+   "clean_broken": 0.0039,
+   "typo_fixed": 0.6401
+  },
+  "combined/wikitalk/ro_plain": {
+   "word_acc": 0.7748,
+   "wrong_change": 0.0643,
+   "clean_broken": 0.0296,
+   "typo_fixed": 0.5365,
+   "accent_fixed": 0.4339
+  },
+  "combined/wikitalk/ro_diac": {
+   "word_acc": 0.8967,
+   "wrong_change": 0.0645,
+   "clean_broken": 0.0389,
+   "typo_fixed": 0.5365
+  },
+  "combined/wiki/ro_plain": {
+   "word_acc": 0.807,
+   "wrong_change": 0.0465,
+   "clean_broken": 0.024,
+   "typo_fixed": 0.5769,
+   "accent_fixed": 0.4774
+  },
+  "combined/wiki/ro_diac": {
+   "word_acc": 0.9169,
+   "wrong_change": 0.0456,
+   "clean_broken": 0.0216,
+   "typo_fixed": 0.5769
+  },
+  "combined/english/en": {
+   "word_acc": 0.938,
+   "wrong_change": 0.0276,
+   "clean_broken": 0.0026,
+   "typo_fixed": 0.5388
+  },
+  "ro/tatoeba/ro_plain": {
+   "word_acc": 0.846,
+   "wrong_change": 0.0318,
+   "clean_broken": 0.0058,
+   "typo_fixed": 0.6044,
+   "accent_fixed": 0.6091
+  },
+  "ro/tatoeba/ro_diac": {
+   "word_acc": 0.944,
+   "wrong_change": 0.0291,
+   "clean_broken": 0.0052,
+   "typo_fixed": 0.6044
+  },
+  "ro/cv/ro_plain": {
+   "word_acc": 0.8428,
+   "wrong_change": 0.0305,
+   "clean_broken": 0.0032,
+   "typo_fixed": 0.6532,
+   "accent_fixed": 0.5861
+  },
+  "ro/cv/ro_diac": {
+   "word_acc": 0.9454,
+   "wrong_change": 0.0285,
+   "clean_broken": 0.0039,
+   "typo_fixed": 0.6532
+  },
+  "ro/wikitalk/ro_plain": {
+   "word_acc": 0.804,
+   "wrong_change": 0.0727,
+   "clean_broken": 0.0453,
+   "typo_fixed": 0.5532,
+   "accent_fixed": 0.5837
+  },
+  "ro/wikitalk/ro_diac": {
+   "word_acc": 0.8898,
+   "wrong_change": 0.0721,
+   "clean_broken": 0.05,
+   "typo_fixed": 0.5532
+  },
+  "ro/wiki/ro_plain": {
+   "word_acc": 0.8714,
+   "wrong_change": 0.0474,
+   "clean_broken": 0.0277,
+   "typo_fixed": 0.5976,
+   "accent_fixed": 0.7712
+  },
+  "ro/wiki/ro_diac": {
+   "word_acc": 0.9179,
+   "wrong_change": 0.0458,
+   "clean_broken": 0.0242,
+   "typo_fixed": 0.5976
+  }
+ },
+ {
+  "size": 125000,
+  "clex_bytes": 1787216,
+  "combined/tatoeba/ro_plain": {
+   "word_acc": 0.8076,
+   "wrong_change": 0.0314,
+   "clean_broken": 0.0043,
+   "typo_fixed": 0.58,
+   "accent_fixed": 0.466
+  },
+  "combined/tatoeba/ro_diac": {
+   "word_acc": 0.942,
+   "wrong_change": 0.0288,
+   "clean_broken": 0.0039,
+   "typo_fixed": 0.58
+  },
+  "combined/cv/ro_plain": {
+   "word_acc": 0.8029,
+   "wrong_change": 0.0308,
+   "clean_broken": 0.0031,
+   "typo_fixed": 0.6338,
+   "accent_fixed": 0.4385
+  },
+  "combined/cv/ro_diac": {
+   "word_acc": 0.9426,
+   "wrong_change": 0.0287,
+   "clean_broken": 0.0038,
+   "typo_fixed": 0.6338
+  },
+  "combined/wikitalk/ro_plain": {
+   "word_acc": 0.7782,
+   "wrong_change": 0.0614,
+   "clean_broken": 0.0289,
+   "typo_fixed": 0.5371,
+   "accent_fixed": 0.4461
+  },
+  "combined/wikitalk/ro_diac": {
+   "word_acc": 0.899,
+   "wrong_change": 0.0613,
+   "clean_broken": 0.0363,
+   "typo_fixed": 0.5371
+  },
+  "combined/wiki/ro_plain": {
+   "word_acc": 0.8098,
+   "wrong_change": 0.0437,
+   "clean_broken": 0.0199,
+   "typo_fixed": 0.5777,
+   "accent_fixed": 0.4782
+  },
+  "combined/wiki/ro_diac": {
+   "word_acc": 0.9201,
+   "wrong_change": 0.0429,
+   "clean_broken": 0.018,
+   "typo_fixed": 0.5777
+  },
+  "combined/english/en": {
+   "word_acc": 0.9375,
+   "wrong_change": 0.0269,
+   "clean_broken": 0.0026,
+   "typo_fixed": 0.5351
+  },
+  "ro/tatoeba/ro_plain": {
+   "word_acc": 0.8451,
+   "wrong_change": 0.0306,
+   "clean_broken": 0.0051,
+   "typo_fixed": 0.5983,
+   "accent_fixed": 0.6067
+  },
+  "ro/tatoeba/ro_diac": {
+   "word_acc": 0.9439,
+   "wrong_change": 0.0277,
+   "clean_broken": 0.0045,
+   "typo_fixed": 0.5983
+  },
+  "ro/cv/ro_plain": {
+   "word_acc": 0.8402,
+   "wrong_change": 0.0298,
+   "clean_broken": 0.0031,
+   "typo_fixed": 0.6465,
+   "accent_fixed": 0.5792
+  },
+  "ro/cv/ro_diac": {
+   "word_acc": 0.9445,
+   "wrong_change": 0.0274,
+   "clean_broken": 0.0037,
+   "typo_fixed": 0.6465
+  },
+  "ro/wikitalk/ro_plain": {
+   "word_acc": 0.8077,
+   "wrong_change": 0.0693,
+   "clean_broken": 0.0441,
+   "typo_fixed": 0.5526,
+   "accent_fixed": 0.5965
+  },
+  "ro/wikitalk/ro_diac": {
+   "word_acc": 0.8921,
+   "wrong_change": 0.0686,
+   "clean_broken": 0.0472,
+   "typo_fixed": 0.5526
+  },
+  "ro/wiki/ro_plain": {
+   "word_acc": 0.8739,
+   "wrong_change": 0.0449,
+   "clean_broken": 0.0237,
+   "typo_fixed": 0.5961,
+   "accent_fixed": 0.772
+  },
+  "ro/wiki/ro_diac": {
+   "word_acc": 0.9206,
+   "wrong_change": 0.0437,
+   "clean_broken": 0.0208,
+   "typo_fixed": 0.5961
+  }
+ },
+ {
+  "size": 150000,
+  "clex_bytes": 2150575,
+  "combined/tatoeba/ro_plain": {
+   "word_acc": 0.8072,
+   "wrong_change": 0.0295,
+   "clean_broken": 0.0029,
+   "typo_fixed": 0.574,
+   "accent_fixed": 0.4643
+  },
+  "combined/tatoeba/ro_diac": {
+   "word_acc": 0.9421,
+   "wrong_change": 0.0279,
+   "clean_broken": 0.003,
+   "typo_fixed": 0.574
+  },
+  "combined/cv/ro_plain": {
+   "word_acc": 0.8017,
+   "wrong_change": 0.0296,
+   "clean_broken": 0.0027,
+   "typo_fixed": 0.626,
+   "accent_fixed": 0.4373
+  },
+  "combined/cv/ro_diac": {
+   "word_acc": 0.9421,
+   "wrong_change": 0.0277,
+   "clean_broken": 0.003,
+   "typo_fixed": 0.626
+  },
+  "combined/wikitalk/ro_plain": {
+   "word_acc": 0.7816,
+   "wrong_change": 0.059,
+   "clean_broken": 0.0274,
+   "typo_fixed": 0.5353,
+   "accent_fixed": 0.4575
+  },
+  "combined/wikitalk/ro_diac": {
+   "word_acc": 0.901,
+   "wrong_change": 0.0589,
+   "clean_broken": 0.0336,
+   "typo_fixed": 0.5353
+  },
+  "combined/wiki/ro_plain": {
+   "word_acc": 0.8111,
+   "wrong_change": 0.0419,
+   "clean_broken": 0.0182,
+   "typo_fixed": 0.5777,
+   "accent_fixed": 0.479
+  },
+  "combined/wiki/ro_diac": {
+   "word_acc": 0.9216,
+   "wrong_change": 0.0412,
+   "clean_broken": 0.0163,
+   "typo_fixed": 0.5777
+  },
+  "combined/english/en": {
+   "word_acc": 0.9364,
+   "wrong_change": 0.0264,
+   "clean_broken": 0.0027,
+   "typo_fixed": 0.5272
+  },
+  "ro/tatoeba/ro_plain": {
+   "word_acc": 0.8445,
+   "wrong_change": 0.0287,
+   "clean_broken": 0.0037,
+   "typo_fixed": 0.5904,
+   "accent_fixed": 0.605
+  },
+  "ro/tatoeba/ro_diac": {
+   "word_acc": 0.9437,
+   "wrong_change": 0.0269,
+   "clean_broken": 0.0035,
+   "typo_fixed": 0.5904
+  },
+  "ro/cv/ro_plain": {
+   "word_acc": 0.8388,
+   "wrong_change": 0.0287,
+   "clean_broken": 0.0027,
+   "typo_fixed": 0.6381,
+   "accent_fixed": 0.578
+  },
+  "ro/cv/ro_diac": {
+   "word_acc": 0.9439,
+   "wrong_change": 0.0264,
+   "clean_broken": 0.003,
+   "typo_fixed": 0.6381
+  },
+  "ro/wikitalk/ro_plain": {
+   "word_acc": 0.811,
+   "wrong_change": 0.067,
+   "clean_broken": 0.0427,
+   "typo_fixed": 0.5504,
+   "accent_fixed": 0.6079
+  },
+  "ro/wikitalk/ro_diac": {
+   "word_acc": 0.8941,
+   "wrong_change": 0.0662,
+   "clean_broken": 0.0444,
+   "typo_fixed": 0.5504
+  },
+  "ro/wiki/ro_plain": {
+   "word_acc": 0.8751,
+   "wrong_change": 0.0431,
+   "clean_broken": 0.0218,
+   "typo_fixed": 0.595,
+   "accent_fixed": 0.7728
+  },
+  "ro/wiki/ro_diac": {
+   "word_acc": 0.922,
+   "wrong_change": 0.042,
+   "clean_broken": 0.0189,
+   "typo_fixed": 0.595
+  }
+ },
+ {
+  "size": 200000,
+  "clex_bytes": 2876170,
+  "combined/tatoeba/ro_plain": {
+   "word_acc": 0.8045,
+   "wrong_change": 0.0287,
+   "clean_broken": 0.0031,
+   "typo_fixed": 0.5557,
+   "accent_fixed": 0.4633
+  },
+  "combined/tatoeba/ro_diac": {
+   "word_acc": 0.9398,
+   "wrong_change": 0.0274,
+   "clean_broken": 0.0029,
+   "typo_fixed": 0.5557
+  },
+  "combined/cv/ro_plain": {
+   "word_acc": 0.7982,
+   "wrong_change": 0.0291,
+   "clean_broken": 0.0026,
+   "typo_fixed": 0.6133,
+   "accent_fixed": 0.4307
+  },
+  "combined/cv/ro_diac": {
+   "word_acc": 0.9404,
+   "wrong_change": 0.0271,
+   "clean_broken": 0.0028,
+   "typo_fixed": 0.6133
+  },
+  "combined/wikitalk/ro_plain": {
+   "word_acc": 0.7858,
+   "wrong_change": 0.0557,
+   "clean_broken": 0.0268,
+   "typo_fixed": 0.5312,
+   "accent_fixed": 0.4758
+  },
+  "combined/wikitalk/ro_diac": {
+   "word_acc": 0.9037,
+   "wrong_change": 0.0555,
+   "clean_broken": 0.0297,
+   "typo_fixed": 0.5312
+  },
+  "combined/wiki/ro_plain": {
+   "word_acc": 0.8126,
+   "wrong_change": 0.0399,
+   "clean_broken": 0.016,
+   "typo_fixed": 0.5768,
+   "accent_fixed": 0.4805
+  },
+  "combined/wiki/ro_diac": {
+   "word_acc": 0.9232,
+   "wrong_change": 0.0391,
+   "clean_broken": 0.0141,
+   "typo_fixed": 0.5768
+  },
+  "combined/english/en": {
+   "word_acc": 0.9352,
+   "wrong_change": 0.0259,
+   "clean_broken": 0.0028,
+   "typo_fixed": 0.5187
+  },
+  "ro/tatoeba/ro_plain": {
+   "word_acc": 0.8415,
+   "wrong_change": 0.0281,
+   "clean_broken": 0.0039,
+   "typo_fixed": 0.5701,
+   "accent_fixed": 0.604
+  },
+  "ro/tatoeba/ro_diac": {
+   "word_acc": 0.9411,
+   "wrong_change": 0.0265,
+   "clean_broken": 0.0034,
+   "typo_fixed": 0.5701
+  },
+  "ro/cv/ro_plain": {
+   "word_acc": 0.8354,
+   "wrong_change": 0.0282,
+   "clean_broken": 0.0026,
+   "typo_fixed": 0.6254,
+   "accent_fixed": 0.5715
+  },
+  "ro/cv/ro_diac": {
+   "word_acc": 0.9422,
+   "wrong_change": 0.0259,
+   "clean_broken": 0.0028,
+   "typo_fixed": 0.6254
+  },
+  "ro/wikitalk/ro_plain": {
+   "word_acc": 0.8154,
+   "wrong_change": 0.0634,
+   "clean_broken": 0.0417,
+   "typo_fixed": 0.5467,
+   "accent_fixed": 0.6262
+  },
+  "ro/wikitalk/ro_diac": {
+   "word_acc": 0.897,
+   "wrong_change": 0.0627,
+   "clean_broken": 0.0403,
+   "typo_fixed": 0.5467
+  },
+  "ro/wiki/ro_plain": {
+   "word_acc": 0.8764,
+   "wrong_change": 0.0413,
+   "clean_broken": 0.0196,
+   "typo_fixed": 0.5925,
+   "accent_fixed": 0.7742
+  },
+  "ro/wiki/ro_diac": {
+   "word_acc": 0.9234,
+   "wrong_change": 0.04,
+   "clean_broken": 0.0168,
+   "typo_fixed": 0.5925
+  }
+ },
+ {
+  "size": 250000,
+  "clex_bytes": 3611640,
+  "combined/tatoeba/ro_plain": {
+   "word_acc": 0.8029,
+   "wrong_change": 0.0275,
+   "clean_broken": 0.0025,
+   "typo_fixed": 0.546,
+   "accent_fixed": 0.4606
+  },
+  "combined/tatoeba/ro_diac": {
+   "word_acc": 0.9388,
+   "wrong_change": 0.0262,
+   "clean_broken": 0.0025,
+   "typo_fixed": 0.546
+  },
+  "combined/cv/ro_plain": {
+   "word_acc": 0.7967,
+   "wrong_change": 0.0285,
+   "clean_broken": 0.0025,
+   "typo_fixed": 0.6038,
+   "accent_fixed": 0.4298
+  },
+  "combined/cv/ro_diac": {
+   "word_acc": 0.9389,
+   "wrong_change": 0.0267,
+   "clean_broken": 0.0029,
+   "typo_fixed": 0.6038
+  },
+  "combined/wikitalk/ro_plain": {
+   "word_acc": 0.7901,
+   "wrong_change": 0.0531,
+   "clean_broken": 0.0254,
+   "typo_fixed": 0.5307,
+   "accent_fixed": 0.4907
+  },
+  "combined/wikitalk/ro_diac": {
+   "word_acc": 0.906,
+   "wrong_change": 0.0525,
+   "clean_broken": 0.0269,
+   "typo_fixed": 0.5307
+  },
+  "combined/wiki/ro_plain": {
+   "word_acc": 0.813,
+   "wrong_change": 0.0384,
+   "clean_broken": 0.0146,
+   "typo_fixed": 0.5742,
+   "accent_fixed": 0.4797
+  },
+  "combined/wiki/ro_diac": {
+   "word_acc": 0.924,
+   "wrong_change": 0.0372,
+   "clean_broken": 0.0127,
+   "typo_fixed": 0.5742
+  },
+  "combined/english/en": {
+   "word_acc": 0.9345,
+   "wrong_change": 0.0248,
+   "clean_broken": 0.0027,
+   "typo_fixed": 0.5131
+  },
+  "ro/tatoeba/ro_plain": {
+   "word_acc": 0.8395,
+   "wrong_change": 0.0272,
+   "clean_broken": 0.0033,
+   "typo_fixed": 0.5572,
+   "accent_fixed": 0.6013
+  },
+  "ro/tatoeba/ro_diac": {
+   "word_acc": 0.9398,
+   "wrong_change": 0.0257,
+   "clean_broken": 0.0031,
+   "typo_fixed": 0.5572
+  },
+  "ro/cv/ro_plain": {
+   "word_acc": 0.8338,
+   "wrong_change": 0.0277,
+   "clean_broken": 0.0025,
+   "typo_fixed": 0.6154,
+   "accent_fixed": 0.5705
+  },
+  "ro/cv/ro_diac": {
+   "word_acc": 0.9406,
+   "wrong_change": 0.0256,
+   "clean_broken": 0.0029,
+   "typo_fixed": 0.6154
+  },
+  "ro/wikitalk/ro_plain": {
+   "word_acc": 0.8199,
+   "wrong_change": 0.0607,
+   "clean_broken": 0.0402,
+   "typo_fixed": 0.5462,
+   "accent_fixed": 0.6411
+  },
+  "ro/wikitalk/ro_diac": {
+   "word_acc": 0.8994,
+   "wrong_change": 0.0596,
+   "clean_broken": 0.0374,
+   "typo_fixed": 0.5462
+  },
+  "ro/wiki/ro_plain": {
+   "word_acc": 0.8768,
+   "wrong_change": 0.0397,
+   "clean_broken": 0.018,
+   "typo_fixed": 0.5899,
+   "accent_fixed": 0.7735
+  },
+  "ro/wiki/ro_diac": {
+   "word_acc": 0.9243,
+   "wrong_change": 0.0381,
+   "clean_broken": 0.0153,
+   "typo_fixed": 0.5899
+  }
+ },
+ {
+  "size": 300000,
+  "clex_bytes": 4353125,
+  "combined/tatoeba/ro_plain": {
+   "word_acc": 0.8023,
+   "wrong_change": 0.0269,
+   "clean_broken": 0.0025,
+   "typo_fixed": 0.5408,
+   "accent_fixed": 0.4609
+  },
+  "combined/tatoeba/ro_diac": {
+   "word_acc": 0.9383,
+   "wrong_change": 0.0257,
+   "clean_broken": 0.0023,
+   "typo_fixed": 0.5408
+  },
+  "combined/cv/ro_plain": {
+   "word_acc": 0.7961,
+   "wrong_change": 0.0279,
+   "clean_broken": 0.0021,
+   "typo_fixed": 0.597,
+   "accent_fixed": 0.4307
+  },
+  "combined/cv/ro_diac": {
+   "word_acc": 0.9386,
+   "wrong_change": 0.0259,
+   "clean_broken": 0.0021,
+   "typo_fixed": 0.597
+  },
+  "combined/wikitalk/ro_plain": {
+   "word_acc": 0.7938,
+   "wrong_change": 0.0498,
+   "clean_broken": 0.025,
+   "typo_fixed": 0.5314,
+   "accent_fixed": 0.504
+  },
+  "combined/wikitalk/ro_diac": {
+   "word_acc": 0.9091,
+   "wrong_change": 0.0491,
+   "clean_broken": 0.0234,
+   "typo_fixed": 0.5314
+  },
+  "combined/wiki/ro_plain": {
+   "word_acc": 0.8136,
+   "wrong_change": 0.0363,
+   "clean_broken": 0.0125,
+   "typo_fixed": 0.5713,
+   "accent_fixed": 0.4784
+  },
+  "combined/wiki/ro_diac": {
+   "word_acc": 0.9251,
+   "wrong_change": 0.0353,
+   "clean_broken": 0.0109,
+   "typo_fixed": 0.5713
+  },
+  "combined/english/en": {
+   "word_acc": 0.9343,
+   "wrong_change": 0.0233,
+   "clean_broken": 0.0024,
+   "typo_fixed": 0.5088
+  },
+  "ro/tatoeba/ro_plain": {
+   "word_acc": 0.8388,
+   "wrong_change": 0.0266,
+   "clean_broken": 0.0033,
+   "typo_fixed": 0.552,
+   "accent_fixed": 0.6016
+  },
+  "ro/tatoeba/ro_diac": {
+   "word_acc": 0.9393,
+   "wrong_change": 0.0252,
+   "clean_broken": 0.0029,
+   "typo_fixed": 0.552
+  },
+  "ro/cv/ro_plain": {
+   "word_acc": 0.8331,
+   "wrong_change": 0.0271,
+   "clean_broken": 0.0021,
+   "typo_fixed": 0.6075,
+   "accent_fixed": 0.5715
+  },
+  "ro/cv/ro_diac": {
+   "word_acc": 0.9402,
+   "wrong_change": 0.0249,
+   "clean_broken": 0.0021,
+   "typo_fixed": 0.6075
+  },
+  "ro/wikitalk/ro_plain": {
+   "word_acc": 0.8233,
+   "wrong_change": 0.0576,
+   "clean_broken": 0.0398,
+   "typo_fixed": 0.5457,
+   "accent_fixed": 0.6543
+  },
+  "ro/wikitalk/ro_diac": {
+   "word_acc": 0.9023,
+   "wrong_change": 0.0564,
+   "clean_broken": 0.0339,
+   "typo_fixed": 0.5457
+  },
+  "ro/wiki/ro_plain": {
+   "word_acc": 0.8775,
+   "wrong_change": 0.0376,
+   "clean_broken": 0.0158,
+   "typo_fixed": 0.5867,
+   "accent_fixed": 0.7722
+  },
+  "ro/wiki/ro_diac": {
+   "word_acc": 0.9254,
+   "wrong_change": 0.0362,
+   "clean_broken": 0.0134,
+   "typo_fixed": 0.5867
+  }
+ }
+]

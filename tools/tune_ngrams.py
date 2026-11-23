@@ -24,6 +24,9 @@ WEIGHTS = {
     "formal": "wiki=0.55,wikitalk=0.15,tatoeba=0.15,cv=0.05,wikinews=0.04,wikiquote=0.03,wikivoyage=0.02,wikibooks=0.01",
     "chatty": "wiki=0.2,wikitalk=0.25,tatoeba=0.4,cv=0.1,wikinews=0.02,wikiquote=0.01,wikivoyage=0.01,wikibooks=0.01",
     "pooled": "POOLED",
+    # Common Voice ro is largely Europarl-style ("Am votat în favoarea..."): lower weight variants
+    "cvlow": "wiki=0.37,wikitalk=0.22,tatoeba=0.28,cv=0.03,wikinews=0.04,wikiquote=0.03,wikivoyage=0.02,wikibooks=0.01",
+    "nocv": "wiki=0.38,wikitalk=0.22,tatoeba=0.30,cv=0.0,wikinews=0.04,wikiquote=0.03,wikivoyage=0.02,wikibooks=0.01",
 }
 SETS = ("tatoeba", "cv", "wikitalk", "wiki")
 
@@ -45,18 +48,22 @@ def main():
     ap.add_argument("--weights", default=",".join(WEIGHTS))
     ap.add_argument("--top-k", default="3,8,16,32,64")
     ap.add_argument("--min-count", default="1,2,3,5")
+    ap.add_argument("--min-top", type=int, default=None)
+    ap.add_argument("--out", default="tune-ngrams.json")
+    ap.add_argument("--demote", default="0", help="comma list of 0/1: without/with artifact demotion")
     args = ap.parse_args()
     tune = WORK / "tune"
     tune.mkdir(parents=True, exist_ok=True)
     dev = {s: sample(load_set(s, "dev"), args.n, 1, lo=2, hi=40) for s in SETS}
     results = []
-    for wname, k, m in itertools.product(args.weights.split(","), [int(x) for x in args.top_k.split(",")],
-                                         [int(x) for x in args.min_count.split(",")]):
+    for wname, k, m, dm in itertools.product(args.weights.split(","), [int(x) for x in args.top_k.split(",")],
+                                             [int(x) for x in args.min_count.split(",")],
+                                             [x == "1" for x in args.demote.split(",")]):
         spec = WEIGHTS[wname]
         weights = pooled_weights() if spec == "POOLED" else {a: float(b) for a, b in (kv.split("=") for kv in spec.split(","))}
-        cfg = f"{wname}-k{k}-m{m}"
+        cfg = f"{wname}-k{k}-m{m}" + (f"-t{args.min_top}" if args.min_top else "") + ("-demote" if dm else "")
         prefix = tune / cfg
-        info = build(args.wordlist, f"{prefix}.cngm", weights, k, m)
+        info = build(args.wordlist, f"{prefix}.cngm", weights, k, m, min_top=args.min_top, demote=dm)
         shutil.copyfile(args.clex, f"{prefix}.clex")
         pack = Pack(cfg, prefix)
         row = {"cfg": cfg, "weights": wname, "top_k": k, "min_count": m, "pairs": info["pairs"], "bytes": info["bytes"]}
@@ -71,7 +78,7 @@ def main():
         Path(f"{prefix}.clex").unlink()
         Path(f"{prefix}.cngm").unlink()
     (ROOT / "build").mkdir(exist_ok=True)
-    (ROOT / "build" / "tune-ngrams.json").write_text(json.dumps(results, indent=1) + "\n")
+    (ROOT / "build" / args.out).write_text(json.dumps(results, indent=1) + "\n")
 
 
 if __name__ == "__main__":

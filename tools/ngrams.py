@@ -13,7 +13,8 @@ Subcommands
                             and mixed with the weights; P(next|prev) is the mixed count over all of
                             prev's followers (before pruning, as in the official builder); then each
                             previous word keeps its K most likely followers seen at least M times
-                            (raw, all sources).
+                            (raw, all sources); with --min-top T a word's three most likely
+                            followers only need T occurrences.
   official WORDLIST CORPUS OUT
                             exactly the algorithm of upstream tools/build-next-word.py (used to prove
                             that this serialiser is byte-identical to the official one).
@@ -147,12 +148,13 @@ def count(vocab, sources, workers=7):
 
 
 # ---------------------------------------------------------------- building
-def assemble(n_words, sources, top_k, min_count):
-    """sources: [(keys, counts, weight)] with keys = prev << SHIFT | next in final word ids.
-    One source: P(next|prev) = count / total(prev), exactly the official computation.
-    Several: each source's counts are divided by its pair total and multiplied by its weight."""
+def assemble(n_words, sources, top_k, min_count, min_top=None):
+    """sources: [(keys, counts, weight, multiplier-or-None)] with keys = prev << SHIFT | next in final
+    word ids. One source: P(next|prev) = count / total(prev), exactly the official computation.
+    Several: each source's counts are divided by its pair total and multiplied by its weight (and by
+    the optional per-pair multiplier used for artifact demotion)."""
     if len(sources) == 1:
-        keys, cnts, _ = sources[0]
+        keys, cnts = sources[0][0], sources[0][1]
         u, inv = np.unique(keys, return_inverse=True)
         w = np.bincount(inv, weights=cnts.astype(np.float64))
         r = w.copy()
@@ -160,8 +162,13 @@ def assemble(n_words, sources, top_k, min_count):
         wsum = sum(x[2] for x in sources)
         keys = np.concatenate([x[0] for x in sources])
         u, inv = np.unique(keys, return_inverse=True)
-        w = np.bincount(inv, weights=np.concatenate([c * (wg / wsum / c.sum()) for _, c, wg in sources]))
-        r = np.bincount(inv, weights=np.concatenate([c.astype(np.float64) for _, c, _ in sources]))
+        parts = []
+        for x in sources:
+            c, wg = x[1], x[2]
+            mult = x[3] if len(x) > 3 and x[3] is not None else 1.0
+            parts.append(c * mult * (wg / wsum / c.sum()))
+        w = np.bincount(inv, weights=np.concatenate(parts))
+        r = np.bincount(inv, weights=np.concatenate([x[1].astype(np.float64) for x in sources]))
     prev = u >> SHIFT
     nxt = u & ((1 << SHIFT) - 1)
     totals = np.bincount(prev, weights=w, minlength=n_words)
@@ -171,6 +178,10 @@ def assemble(n_words, sources, top_k, min_count):
     starts = np.r_[0, np.flatnonzero(np.diff(prev)) + 1]
     rank = np.arange(len(prev)) - np.repeat(starts, np.diff(np.r_[starts, len(prev)]))
     keep = (rank < top_k) & (r >= min_count)
+    if min_top is not None:
+        # the three most likely followers (the ones a next-word bar shows) need less evidence,
+        # so small conversational sources are not pruned away by a raw-count threshold
+        keep |= (rank < min(3, top_k)) & (r >= min_top)
     prev, nxt, w = prev[keep], nxt[keep], w[keep]
     tot = totals[prev]
     # quantise with Python floats/math.log10, as the official tool does
@@ -180,11 +191,29 @@ def assemble(n_words, sources, top_k, min_count):
     blob += nxt.astype("<u4").tobytes()
     blob += qb
     info = {"pairs": int(len(prev)), "bytes": len(blob), "previous_words": int(len(np.unique(prev))),
-            "candidate_pairs": int(len(u)), "top_k": top_k, "min_count": min_count}
+            "candidate_pairs": int(len(u)), "top_k": top_k, "min_count": min_count, "min_top": min_top}
     return bytes(blob), info
 
 
-def build(wordlist, out, weights, top_k, min_count, report=None):
+# Corpus artifacts demoted as *followers* (weight x DEMOTE_FACTOR) in the source that produces them;
+# they stay in the dictionary and keep their evidence from every other source.
+#  tatoeba : Tatoeba's stock characters (Tom, Mary, John) follow "că", "pe", "lui" in thousands of sentences.
+#  wikitalk: Wikipedia self-reference in discussion pages ("pe Wikipedia", "la pagina", "acest articol").
+DEMOTE = {
+    "tatoeba": ["tom", "mary", "john"],
+    "wikitalk": ["wikipedia", "wiki", "articol", "articolul", "articolului", "articole", "articolele", "articolelor",
+                 "pagina", "paginii", "pagini", "paginile", "paginilor", "discuție", "discuția", "discuții",
+                 "discuțiile", "utilizator", "utilizatorul", "utilizatorului", "utilizatori", "utilizatorii",
+                 "format", "formatul", "categoria", "categorie", "categorii", "ștergere", "ștergerea", "șters",
+                 "ștearsă", "redirect", "redirecționare", "politicile", "politica", "bloca", "blocat", "blocare",
+                 "administrator", "administratori", "administratorii", "editare", "editări", "editările",
+                 "modificare", "modificarea", "modificările", "sursă", "sursa", "surse", "sursele", "referințe",
+                 "referințele", "vot", "votul", "votat", "voturi", "wikipediei", "proiect", "proiectul", "cafenea"],
+}
+DEMOTE_FACTOR = 0.05
+
+
+def build(wordlist, out, weights, top_k, min_count, report=None, min_top=None, demote=False):
     vocab_words = (PAIRS / "vocab.txt").read_text(encoding="utf-8").split("\n")
     ordered = load_wordlist(wordlist)
     ids = {v: i for i, v in enumerate(ordered)}
@@ -201,11 +230,17 @@ def build(wordlist, out, weights, top_k, min_count, report=None):
         k, c = z["keys"], z["counts"]
         p, q = remap[k >> SHIFT], remap[k & ((1 << SHIFT) - 1)]
         ok = (p >= 0) & (q >= 0)
-        sources.append((((p[ok] << SHIFT) | q[ok]), c[ok], wgt))
-    blob, info = assemble(len(ordered), sources, top_k, min_count)
+        mult = None
+        if demote and src in DEMOTE:
+            bad = np.array([ids[x] for x in DEMOTE[src] if x in ids], dtype=np.int64)
+            mult = np.where(np.isin(q[ok], bad), DEMOTE_FACTOR, 1.0)
+        sources.append((((p[ok] << SHIFT) | q[ok]), c[ok], wgt, mult))
+    blob, info = assemble(len(ordered), sources, top_k, min_count, min_top)
     Path(out).parent.mkdir(parents=True, exist_ok=True)
     Path(out).write_bytes(blob)
     info["weights"] = weights
+    info["demote"] = DEMOTE if demote else None
+    info["demote_factor"] = DEMOTE_FACTOR if demote else None
     info["wordlist_words"] = len(ordered)
     if report:
         Path(report).write_text(json.dumps(info, indent=1) + "\n")
@@ -225,6 +260,8 @@ def main():
     b.add_argument("--weights", default="wiki=0.35,wikitalk=0.2,tatoeba=0.25,cv=0.1,wikinews=0.04,wikiquote=0.03,wikivoyage=0.02,wikibooks=0.01")
     b.add_argument("--top-k", type=int, default=32)
     b.add_argument("--min-count", type=int, default=2)
+    b.add_argument("--min-top", type=int, default=None, help="lower raw-count threshold for each word's top-3 followers")
+    b.add_argument("--demote", action="store_true", help="demote corpus-artifact followers (DEMOTE)")
     b.add_argument("--report", default=None)
     o = sub.add_parser("official")
     o.add_argument("wordlist")
@@ -237,7 +274,7 @@ def main():
         official(args.wordlist, args.corpus, args.out)
     else:
         weights = {k: float(v) for k, v in (kv.split("=") for kv in args.weights.split(","))}
-        build(args.wordlist, args.out, weights, args.top_k, args.min_count, args.report)
+        build(args.wordlist, args.out, weights, args.top_k, args.min_count, args.report, args.min_top, args.demote)
 
 
 if __name__ == "__main__":
