@@ -1,9 +1,19 @@
-# Romanian Pro — Clink language pack (Phase 1, local build)
+# Romanian Pro — Clink language pack
 
 A larger, register-balanced Romanian dictionary and next-word model for the Clink iOS keyboard,
 aimed at people who type Romanian and English together (Combined mode with Bilingual Guard).
 
-**Status: local build only. Nothing has been pushed or published.**
+**Status:** Phase 1 (dictionary + next-word model) released. Not yet checked on a device; a neural
+next-word model (Phase 2) is in progress.
+
+## Install in Clink
+
+1. In Clink, add this repository as a language repository: `https://github.com/dobrerares/clink-romanian-pro`.
+2. If you use `dobrerares/clink-romanian-language`, remove it: both ship the same codes
+   (`ro`, plus the identical fallbacks `ro_ro`, `mo` and `rup`, because Clink may hide a custom pack
+   whose code collides with its official `ro`).
+3. Turn on Romanian (and English for Combined mode). Pairs well with the Bilingual Guard plugin
+   from `dobrerares/clink-typing-plugins`.
 
 ## Assets (`Lexicons/`)
 

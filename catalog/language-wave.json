@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "attribution": [
+    {
+      "name": "Romanian Wikipedia, Wikiquote, Wikivoyage, Wikibooks (articles and discussion pages)",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://ro.wikipedia.org"
+    },
+    {
+      "name": "Romanian Wikinews",
+      "license": "CC-BY-2.5",
+      "url": "https://ro.wikinews.org"
+    },
+    {
+      "name": "FrequencyWords / OpenSubtitles 2018 Romanian word frequencies",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/hermitdave/FrequencyWords"
+    },
+    {
+      "name": "Tatoeba Romanian sentences",
+      "license": "CC-BY-2.0-FR",
+      "url": "https://tatoeba.org"
+    },
+    {
+      "name": "Mozilla Common Voice Romanian sentence collector",
+      "license": "CC0-1.0",
+      "url": "https://github.com/common-voice/common-voice"
+    },
+    {
+      "name": "Clink official Romanian emoji metadata",
+      "license": "Clink Community Assets License 1.0",
+      "url": "https://github.com/anti-ltd/clink-language-packs"
+    }
+  ],
+  "packs": [
+    {
+      "code": "ro",
+      "status": "complete",
+      "sources": [
+        "https://dumps.wikimedia.org/rowiki/",
+        "https://github.com/hermitdave/FrequencyWords/tree/master/content/2018/ro",
+        "https://tatoeba.org/en/downloads",
+        "https://github.com/common-voice/common-voice/tree/main/server/data/ro"
+      ],
+      "sha256": {
+        "wordlist": "18b9a8adde6f247fb53b36d3d32b01647e06db3ee38595914669836caefcec69"
+      }
+    },
+    {
+      "code": "ro_ro",
+      "status": "complete",
+      "sources": [
+        "https://dumps.wikimedia.org/rowiki/",
+        "https://github.com/hermitdave/FrequencyWords/tree/master/content/2018/ro",
+        "https://tatoeba.org/en/downloads",
+        "https://github.com/common-voice/common-voice/tree/main/server/data/ro"
+      ],
+      "sha256": {
+        "wordlist": "18b9a8adde6f247fb53b36d3d32b01647e06db3ee38595914669836caefcec69"
+      }
+    },
+    {
+      "code": "mo",
+      "status": "complete",
+      "sources": [
+        "https://dumps.wikimedia.org/rowiki/",
+        "https://github.com/hermitdave/FrequencyWords/tree/master/content/2018/ro",
+        "https://tatoeba.org/en/downloads",
+        "https://github.com/common-voice/common-voice/tree/main/server/data/ro"
+      ],
+      "sha256": {
+        "wordlist": "18b9a8adde6f247fb53b36d3d32b01647e06db3ee38595914669836caefcec69"
+      }
+    },
+    {
+      "code": "rup",
+      "status": "complete",
+      "sources": [
+        "https://dumps.wikimedia.org/rowiki/",
+        "https://github.com/hermitdave/FrequencyWords/tree/master/content/2018/ro",
+        "https://tatoeba.org/en/downloads",
+        "https://github.com/common-voice/common-voice/tree/main/server/data/ro"
+      ],
+      "sha256": {
+        "wordlist": "18b9a8adde6f247fb53b36d3d32b01647e06db3ee38595914669836caefcec69"
+      }
+    }
+  ],
+  "imes": []
+}
