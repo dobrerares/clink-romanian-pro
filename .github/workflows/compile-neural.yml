@@ -1,0 +1,50 @@
+# Compile the Linux-exported Core ML package (neural/ro.mlpackage) into ro.mlmodelc on a
+# GitHub-hosted macOS runner, check it numerically against the PyTorch reference fixtures, and
+# upload the compiled model as a short-lived artifact. Manual trigger only; read-only token; no
+# secrets; standard runner (free for public repositories). Nothing is committed or released here:
+# install the artifact with tools/install-neural.sh, then publish with the normal release workflow.
+name: Compile neural model (Core ML)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: compile-neural
+  cancel-in-progress: false
+
+jobs:
+  compile:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Core ML tools (conversion runtime only; no training, no corpora)
+        run: python -m pip install --disable-pip-version-check coremltools==9.0 numpy==2.2.6
+
+      - name: Show toolchain
+        run: |
+          sw_vers
+          xcrun --find coremlcompiler
+          xcrun coremlcompiler version || true
+
+      - name: Compile with xcrun coremlcompiler and verify against fixtures (CPU_ONLY)
+        run: python tools/neural/verify_compiled.py --out out
+
+      - name: Upload compiled model
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ro-mlmodelc
+          path: out/
+          retention-days: 3
+          if-no-files-found: error

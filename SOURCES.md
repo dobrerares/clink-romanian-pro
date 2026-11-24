@@ -6,6 +6,15 @@ SHA-256 (and the publisher's SHA-1 where one is published) and the licence of ev
 Only derived data ships: lower-cased word counts (`source/ro.txt` → `Lexicons/ro.clex`) and
 word-pair probabilities (`Lexicons/ro.cngm`). No sentence text is shipped.
 
+Phase 2 (branch `neural`) adds a neural next-token model: network weights and a 12,036-token
+subword vocabulary learned from the *training split* of the same licensed sentence text
+(Wikipedia articles and discussions, Wikiquote/Wikivoyage/Wikibooks, Wikinews, Tatoeba, Common Voice;
+not FrequencyWords, which has no sentences). It ships as `Lexicons/<code>.mlmodelc` (compiled from
+`neural/ro.mlpackage`) + `Lexicons/<code>.bpevocab`, under CC BY-SA 4.0 like the other derived files.
+No sentence text is shipped; `source/ro_neural-corpus.json` records the exact training-file hash,
+counts and filters (`LOG-phase2.md`). The official Clink trainer `tools/train-neural.py` is copied
+unchanged into `vendor/tools/` (Clink Community Assets License 1.0).
+
 Because FrequencyWords and the Wikimedia text are CC BY-SA, `source/ro.txt`, `Lexicons/ro.clex`
 and `Lexicons/ro.cngm` are released under **CC BY-SA 4.0**. `Lexicons/ro.emoji.json` and the
 copied builder tools in `vendor/` keep their own licence (Clink Community Assets License 1.0).
@@ -22,7 +31,8 @@ copied builder tools in `vendor/` keep their own licence (Clink Community Assets
 | Tatoeba Romanian sentences (export `ron_sentences.tsv.bz2`) | https://tatoeba.org/en/downloads | CC BY 2.0 FR ("These files are released under CC BY 2.0 FR"; Romanian is not in the CC0 subset) | Conversational word counts; word pairs (train split only); held-out test set | "Contains sentences from Tatoeba (https://tatoeba.org), CC BY 2.0 FR, by the Tatoeba contributors." |
 | Mozilla Common Voice Romanian sentences `server/data/ro/sentence-collector.txt` | https://github.com/common-voice/common-voice/tree/main/server/data/ro | CC0 (README: sentence text "released under a CC0 public domain Creative Commons license"; repo code MPL-2.0) | Short read-speech sentences: word counts, word pairs (train split); held-out test set | Not required (CC0). Courtesy: "Sentences from Mozilla Common Voice (Ardila et al., LREC 2020)." Caveat: the sentences were contributed through the Sentence Collector under a public-domain declaration; many look Europarl-derived. We rely on Mozilla's CC0 statement for this file. |
 | Clink official `Lexicons/ro.emoji.json` (anti-ltd/clink-language-packs, SHA-256 03b8b9cf…cb6) | /home/rdobre/projects/clink/upstream/clink-language-packs | Clink Community Assets License 1.0 (© 2026 Anti Limited and contributors) | Copied unchanged as `Lexicons/ro.emoji.json` | "ro.emoji.json © Anti Limited and contributors, from https://github.com/anti-ltd/clink-language-packs, Clink Community Assets License 1.0, unchanged." |
-| Clink builder tools (`build-pack.py`, `tools/build-next-word.py`, `tools/validate-pack.py`) | same repository | Clink Community Assets License 1.0 | Copied unchanged into `vendor/`; used to build/validate | as above |
+| Clink builder tools (`build-pack.py`, `tools/build-next-word.py`, `tools/validate-pack.py`, `tools/train-neural.py`, `requirements-train.txt`) | same repository | Clink Community Assets License 1.0 | Copied unchanged into `vendor/`; used to build/validate; the neural model class, tokenizer and Core ML conversion are taken from `train-neural.py` | as above |
+| Neural model training (Phase 2) | — | — | The text sources above (training split only, Wikimedia + Tatoeba + Common Voice; not FrequencyWords) | Attribution as for each source; the trained weights are CC BY-SA 4.0 |
 
 ## Build-time only (never shipped)
 

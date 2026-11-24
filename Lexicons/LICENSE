@@ -24,6 +24,19 @@ cleaned of diacritic-less misspellings, ranked and cut to 150,000 words; word pa
 mixed, pruned and quantised. No sentence text is included. No endorsement by any source is implied.
 Hunspell ro_RO (rospell) was used only as a yes/no check at build time; none of its data is included.
 
+ro.mlmodelc, ro.bpevocab (and the identical ro_ro, mo, rup copies), when present
+---------------------------------------------------------------------------------
+Licensed under CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/
+
+A neural next-token model (Core ML, compiled from neural/ro.mlpackage) and its subword vocabulary,
+trained on the training split of the Romanian Wikipedia (articles and discussion pages),
+Wikiquote, Wikivoyage and Wikibooks text (CC BY-SA 4.0 / GFDL), Romanian Wikinews (CC BY 2.5),
+Tatoeba Romanian sentences (CC BY 2.0 FR) and Mozilla Common Voice sentence-collector text (CC0 1.0),
+with the sources and attribution listed above. Changes: text extracted, normalised, filtered and
+reduced to network weights and a byte-pair vocabulary; no sentence text is included. The model
+architecture, tokenizer and Core ML conversion come from the official Clink tools/train-neural.py
+(Clink Community Assets License 1.0, copied unchanged in vendor/tools/).
+
 ro.emoji.json
 -------------
 Copied unchanged from https://github.com/anti-ltd/clink-language-packs (Lexicons/ro.emoji.json),

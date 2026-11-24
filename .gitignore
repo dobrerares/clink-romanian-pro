@@ -3,3 +3,5 @@ __pycache__/
 work/
 build/ranked-superset.txt
 LOG-worker-*
+.venv/
+LOG-worker2-*
