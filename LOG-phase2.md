@@ -242,6 +242,11 @@ model.mlmodel + weights/weight.bin), `neural/ro.bpevocab`, `neural/fixtures.json
 test}.json`, EVAL-phase2.md, README.md, LOG-phase2.md, `tools/neural/*` updates. Not in `Lexicons/`:
 no `.mlmodelc` exists yet. `main` untouched.
 
+**06:10 Commits on `neural`** (local only, author Daedalus <daedalus@localhost>; `main` still at
+c7c1c35): 08a8094 Phase 2 tooling; ade142d model, vocabulary, fixtures, evaluation, docs; followed
+by this log update. Nothing was pushed, tagged or released; no GitHub call was made; the other
+repositories were only read.
+
 ### What Daedalus has to do (nothing here was pushed, tagged or released)
 
 1. Push the branch: `git push origin neural`.
