@@ -50,8 +50,14 @@ def main():
         "bpe": {"merges": 12000, "tokens": cfg.get("V") or None, "vocab_sha256": sha256(ROOT / "neural" / "ro.bpevocab")
                 if (ROOT / "neural" / "ro.bpevocab").exists() else None,
                 "learner": "tools/neural/bpe.py (incremental; identical merges to the official train_bpe, verified)"},
-        "training": {k: cfg[k] for k in ("dim", "hidden", "layers", "window", "stride", "mix", "epochs", "total_steps",
-                                          "world", "threads", "batch", "lr", "warmup", "lr_floor", "clip", "seed") if k in cfg},
+        "training": dict({k: cfg[k] for k in ("dim", "hidden", "layers", "window", "stride", "mix", "total_steps",
+                                               "world", "threads", "batch", "lr", "warmup", "lr_floor", "clip", "seed") if k in cfg},
+                         steps_per_mixture_epoch=cfg["steps_per_epoch"][0],
+                         mixture_epochs=round(cfg["total_steps"] / cfg["steps_per_epoch"][0], 3),
+                         parameters=cfg.get("parameters"),
+                         note="mix = per-epoch repetition factor of each source (0.5 = a random half of Wikipedia per epoch); "
+                              "the loss weight of a demoted follower (Tatoeba tom/mary/john, talk-page Wikipedia "
+                              "self-reference) is 0.05"),
         "training_result": final,
         "official_trainer_sha256": OFFICIAL_SHA256,
         "reproduce": [

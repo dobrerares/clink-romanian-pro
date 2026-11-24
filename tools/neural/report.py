@@ -82,7 +82,7 @@ def main():
         print()
     if args.int8 and args.fp32:
         A, B = json.load(open(args.fp32)), json.load(open(args.int8))
-        print("### int8 weight quantization (simulated in PyTorch exactly as coremltools quantizes)\n")
+        print(f"### int8 weight quantization ({A['split']} split; simulated in PyTorch exactly as coremltools quantizes)\n")
         print("| Set | metric | fp32 (evaluated model) | int8 weights | Δ |")
         print("|---|---|---|---|---|")
         for s in ORDER:
@@ -94,7 +94,9 @@ def main():
                     import statistics, math
                     t = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776}.get(len(d) - 1, 2.0)
                     h = t * statistics.stdev(d) / math.sqrt(len(d)) if len(d) > 1 else 0.0
-                    print(f"| {NAMES[s]} | {metric} | {100 * sum(x) / len(x):.2f} | {100 * sum(y) / len(y):.2f} | "
+                    label = NAMES[s].replace("test", A["split"]).replace("held-out", A["split"])
+                    mname = {"nn_top3": "(b) neural top-3", f"combo{lk}_top3": f"(c) λ={lk} top-3"}[metric]
+                    print(f"| {label} | {mname} | {100 * sum(x) / len(x):.2f} | {100 * sum(y) / len(y):.2f} | "
                           f"{dpm([sum(d) / len(d), h])} |")
         print()
 

@@ -1,0 +1,226 @@
+{
+ "what": "Training corpus of the Romanian Pro neural next-token model (neural/ro.mlpackage, ro.bpevocab). The sentence text itself is not committed (348 MB); see LOG-phase2.md.",
+ "sentence_file": {
+  "path": "work/neural/ro_sentences.tsv",
+  "format": "<source>:<doc id>\\t<sentence> (official trainer format)",
+  "sentences": 2723747,
+  "bytes": 363886395,
+  "sha256": "5f2a38ebbfcba35ddb55ecb68073a1617c3b18aa7d44975f5baf95783e7fead0"
+ },
+ "built_from": "Phase 1 work/train/<source>.txt (training split; every near-duplicate of any dev/test sentence removed)",
+ "sources": {
+  "wiki": {
+   "phase1_train_sentences": 4773682,
+   "kept_sentences": 1971363,
+   "kept_words": 35970733,
+   "dropped": {
+    "gap": 786417,
+    "foreign": 114125,
+    "junk": 1690073,
+    "long": 28707,
+    "diacless": 69599,
+    "nodiac": 58987,
+    "english": 2350,
+    "template": 52028,
+    "short": 33
+   },
+   "bpe_tokens": 52868243,
+   "training_targets": 50896880,
+   "demoted_targets": 0,
+   "mixture_weight": 0.5
+  },
+  "wikitalk": {
+   "phase1_train_sentences": 1172424,
+   "kept_sentences": 678331,
+   "kept_words": 10296572,
+   "dropped": {
+    "junk": 204428,
+    "diacless": 163786,
+    "nodiac": 14750,
+    "gap": 31261,
+    "long": 11111,
+    "foreign": 8980,
+    "english": 1861,
+    "template": 57853,
+    "short": 63
+   },
+   "bpe_tokens": 13677839,
+   "training_targets": 12999508,
+   "demoted_targets": 364205,
+   "mixture_weight": 3.0
+  },
+  "tatoeba": {
+   "phase1_train_sentences": 33545,
+   "kept_sentences": 32479,
+   "kept_words": 209634,
+   "dropped": {
+    "short": 532,
+    "junk": 358,
+    "diacless": 122,
+    "foreign": 43,
+    "long": 11
+   },
+   "bpe_tokens": 319454,
+   "training_targets": 286975,
+   "demoted_targets": 5177,
+   "mixture_weight": 20.0
+  },
+  "cv": {
+   "phase1_train_sentences": 10814,
+   "kept_sentences": 10697,
+   "kept_words": 76478,
+   "dropped": {
+    "diacless": 103,
+    "junk": 3,
+    "foreign": 8,
+    "english": 3
+   },
+   "bpe_tokens": 112354,
+   "training_targets": 101657,
+   "demoted_targets": 0,
+   "mixture_weight": 6.0
+  },
+  "wikinews": {
+   "phase1_train_sentences": 11545,
+   "kept_sentences": 6857,
+   "kept_words": 137955,
+   "dropped": {
+    "junk": 4045,
+    "nodiac": 76,
+    "long": 90,
+    "diacless": 389,
+    "foreign": 31,
+    "gap": 56,
+    "english": 1
+   },
+   "bpe_tokens": 192973,
+   "training_targets": 186116,
+   "demoted_targets": 0,
+   "mixture_weight": 3.0
+  },
+  "wikiquote": {
+   "phase1_train_sentences": 12729,
+   "kept_sentences": 10734,
+   "kept_words": 132743,
+   "dropped": {
+    "foreign": 97,
+    "junk": 1005,
+    "nodiac": 149,
+    "diacless": 348,
+    "short": 3,
+    "gap": 102,
+    "long": 127,
+    "english": 32,
+    "template": 132
+   },
+   "bpe_tokens": 193909,
+   "training_targets": 183175,
+   "demoted_targets": 0,
+   "mixture_weight": 3.0
+  },
+  "wikivoyage": {
+   "phase1_train_sentences": 10491,
+   "kept_sentences": 5921,
+   "kept_words": 82088,
+   "dropped": {
+    "junk": 3115,
+    "diacless": 617,
+    "foreign": 538,
+    "nodiac": 98,
+    "long": 50,
+    "gap": 43,
+    "english": 32,
+    "short": 3,
+    "template": 74
+   },
+   "bpe_tokens": 122789,
+   "training_targets": 116868,
+   "demoted_targets": 0,
+   "mixture_weight": 3.0
+  },
+  "wikibooks": {
+   "phase1_train_sentences": 12707,
+   "kept_sentences": 7365,
+   "kept_words": 131150,
+   "dropped": {
+    "junk": 2810,
+    "diacless": 1227,
+    "gap": 827,
+    "nodiac": 128,
+    "long": 230,
+    "english": 60,
+    "foreign": 56,
+    "short": 4
+   },
+   "bpe_tokens": 186781,
+   "training_targets": 179416,
+   "demoted_targets": 0,
+   "mixture_weight": 3.0
+  }
+ },
+ "filters": {
+  "template_cap": 3,
+  "min_words": 2,
+  "max_words": 50,
+  "no_template_cap": [
+   "cv",
+   "tatoeba"
+  ]
+ },
+ "bpe": {
+  "merges": 12000,
+  "tokens": 12036,
+  "vocab_sha256": "ea1bc387a9625651e801cd2e2ef43b87be668289baa06bdb85943e0d698d5056",
+  "learner": "tools/neural/bpe.py (incremental; identical merges to the official train_bpe, verified)"
+ },
+ "training": {
+  "dim": 128,
+  "hidden": 256,
+  "layers": 2,
+  "window": 12,
+  "stride": 6,
+  "mix": {
+   "wiki": 0.5,
+   "wikitalk": 3.0,
+   "tatoeba": 20.0,
+   "cv": 6.0,
+   "wikinews": 3.0,
+   "wikiquote": 3.0,
+   "wikivoyage": 3.0,
+   "wikibooks": 3.0
+  },
+  "total_steps": 80000,
+  "world": 4,
+  "threads": 2,
+  "batch": 64,
+  "lr": 0.002,
+  "warmup": 1000,
+  "lr_floor": 0.05,
+  "clip": 1.0,
+  "seed": 20261124,
+  "steps_per_mixture_epoch": 40166,
+  "mixture_epochs": 1.992,
+  "parameters": 2276612,
+  "note": "mix = per-epoch repetition factor of each source (0.5 = a random half of Wikipedia per epoch); the loss weight of a demoted follower (Tatoeba tom/mary/john, talk-page Wikipedia self-reference) is 0.05"
+ },
+ "training_result": {
+  "step": 80000,
+  "targets": 144981296,
+  "hours": 5.686,
+  "dev": {
+   "tatoeba": 4.28971,
+   "wiki": 5.38353,
+   "wikitalk": 4.78162,
+   "cv": 4.3006,
+   "mean": 4.68886
+  }
+ },
+ "official_trainer_sha256": "19ae4eb48f3fc1f9b7966a5bcd22b1ea157e6e52d16a240c9bbc3d769d53ce8a",
+ "reproduce": [
+  "python3 tools/neural/corpus.py",
+  "python3 tools/neural/bpe.py work/neural/ro_sentences.tsv work/neural/ro.bpevocab --merges 12000",
+  "python3 tools/neural/encode.py work/neural/ro.bpevocab",
+  "python3 tools/neural/train.py --run <name> <settings above>",
+  "python3 tools/neural/export.py work/neural/runs/<name>/final.pt"
+ ]
+}

@@ -172,3 +172,89 @@ so 80,000 steps ≈ 2 epochs ≈ 145M targets ≈ 5.6-5.8 h. The harness stops b
 so `train.py` got `--session-limit`: each invocation checkpoints and exits after 1.85 h and the same
 command resumes (tested with 2 ranks: pause at step 82, resume from step 82). A first launch was
 stopped during setup (no step trained; moved to `work/trash/`).
+
+**00:10 Decision: `source/<code>_sentences.tsv`.** What it must contain: the trainer's input, one
+training sentence per line (`id<TAB>sentence`), i.e. `work/neural/ro_sentences.tsv` -
+2,723,747 sentences, 348 MB (the manifest builder only counts its lines, for `neural.sentenceCount`).
+That is 7× the repository's 50 MB rule and 3.5× GitHub's hard 100 MB per-file limit, would be needed
+four times (one per code, or symlinks), and would add ~350 MB (≈ 90 MB compressed) of sentence text
+to the public history for a single number in the manifest. Not committed. Consequences: the release
+manifest has no `neural` block (sentenceCount, vocabularySize, bpeMerges, modelVersion) for these
+packs - exactly like the official `ro` pack, which ships its neural model without
+`source/ro_sentences.tsv`; the assets themselves (`<code>.mlmodelc/*`, `<code>.bpevocab`) are
+listed and hashed as usual. What is committed instead: `source/ro_neural-corpus.json` (receipt:
+SHA-256 and line count of the exact training file, per-source counts, filters, BPE and training
+settings, rebuild commands; the file is rebuilt bit-for-bit by `tools/neural/corpus.py` from the
+Phase 1 data). Alternatives if the `neural` block turns out to matter on device: (1) let the repo's
+own `tools/build-release-manifest.py` take the count from the receipt when the TSV is absent (a small
+change to release tooling, so not done without Daedalus's approval); (2) publish the compressed corpus
+as a separate release download outside `Lexicons/` (Clink ignores it). Never a shortened TSV: its
+count would misdescribe the model.
+
+## 2026-11-24
+
+**00:05-05:45 Final training** in four resumable sessions (pauses at steps 26,405 / 52,573 / 78,132,
+each resumed from `last.pt` with the same command; ~7,200 targets/s throughout). **80,000 steps,
+144,981,296 targets, 5.69 h** (20,471 s) of training. Dev NLL per BPE target (exact official
+contexts) fell monotonically on all four sets, including the most repeated one (Tatoeba
+5.14 → 4.29: no sign of over-fitting after ≈ 40 passes):
+
+| step | Tatoeba | Wikipedia | discussions | Common Voice | mean |
+|---|---|---|---|---|---|
+| 5,000 | 5.138 | 6.350 | 5.519 | 5.036 | 5.511 |
+| 20,000 | 4.621 | 5.739 | 5.042 | 4.583 | 4.996 |
+| 40,000 (epoch 1) | 4.411 | 5.528 | 4.896 | 4.401 | 4.809 |
+| 60,000 | 4.325 | 5.418 | 4.805 | 4.326 | 4.718 |
+| **80,000 (final)** | **4.290** | **5.384** | **4.782** | **4.301** | **4.689** |
+
+Total training compute for Phase 2: pilots 0.85 h (4 in parallel) + probes ≈ 0.1 h + final 5.69 h
+≈ 6.6 h wall-clock, within the ~10 h budget.
+
+**05:47 Export** (`tools/neural/export.py work/neural/runs/final/final.pt --out neural`):
+`neural/ro.mlpackage` 2,377,274 bytes (weight.bin 2,338,824 B, sha256 5221ca12…85ed5),
+`logProbs` FLOAT16 [1, 12036], 14 int8 constexpr ops, int8 simulation = converter's quantized
+embedding exactly; `neural/ro.bpevocab` sha256 ea1bc387…d5056 (identical to the vocabulary the model
+was trained with); `neural/fixtures.json` 49 dev contexts (sha256 c0ac7e4f…1cbee), fp32 vs int8
+top-1 agreement 48/49. Linux dry run of the macOS check with fp16 logits/softmax/log on the real model:
+max |Δ| 0.014, mean 0.0016, top-1/top-5 1.0; up to 11,571 of 12,036 log-probs become −inf in fp16
+(handled). `source/ro_neural-corpus.json` written (training file sha256 5f2a38eb…fead0,
+2,723,747 lines, 1.992 mixture epochs).
+
+**05:50-06:03 Evaluation** (`build/neural-eval-dev.json`, `-dev-int8sim.json`, `-test.json`;
+EVAL-phase2.md). Dev (5 seeds × 2,000 sentences per set): λ scan over 0…1 → **λ = 0.3** best for
+mean top-3 (33.00) and after 1 letter (59.76); fixed before the test run, which computed only
+λ ∈ {0, 0.3, 1}. int8 simulation on dev: neural top-3 within 0.04 points, combination within 0.15.
+Test, top-3 / after 1 letter, (a) Phase 1 `.cngm` → (b) neural → (c) λ 0.3:
+- discussions 26.4 → 35.3 → 35.8 / 53.1 → 59.5 → 60.5
+- Tatoeba 26.2 → 31.8 → 32.8 / 53.2 → 60.4 → 62.0
+- Common Voice 26.2 → 32.8 → 33.5 / 53.5 → 60.3 → 61.7
+- Wikipedia 24.7 → 27.0 → 29.2 / 47.5 → 49.9 → 53.2
+All 16 paired differences vs (a) positive, intervals ±0.1-0.5. The (a) column equals EVAL.md's
+Romanian Pro column to the decimal (protocol identical). 1.2-2.4% of next words are hyphenated
+(unreachable for the neural model alone).
+
+**Verdict: ship** (ship gate met by (b) alone and by (c)), conditional on the macOS compile job
+passing its numeric check and an on-device look in Clink.
+
+**06:05 Files for the commit.** `neural/ro.mlpackage/` (Manifest.json, Data/com.apple.CoreML/
+model.mlmodel + weights/weight.bin), `neural/ro.bpevocab`, `neural/fixtures.json`,
+`neural/export-receipt.json`, `source/ro_neural-corpus.json`, `build/neural-eval-{dev,dev-int8sim,
+test}.json`, EVAL-phase2.md, README.md, LOG-phase2.md, `tools/neural/*` updates. Not in `Lexicons/`:
+no `.mlmodelc` exists yet. `main` untouched.
+
+### What Daedalus has to do (nothing here was pushed, tagged or released)
+
+1. Push the branch: `git push origin neural`.
+2. Run the compile job on the branch: `gh workflow run compile-neural.yml --ref neural`, then
+   `gh run watch` (≈ 5 min on `macos-latest`, free for public repositories). It must end green;
+   `verification.json` in the artifact shows the numbers.
+3. Download the artifact: `gh run download <run-id> -n ro-mlmodelc -D /tmp/ro-mlmodelc`.
+4. Install: `tools/install-neural.sh /tmp/ro-mlmodelc` (refuses unless verification passed and the
+   vocabulary matches; copies `ro.mlmodelc` + `ro.bpevocab` to `Lexicons/{ro,ro_ro,mo,rup}.*` and
+   runs `vendor/tools/validate-pack.py` for each code).
+5. Commit `Lexicons/` on `neural`, merge `neural` into `main` (fast-forward), then release as for
+   Phase 1 (`./update.sh` tags `vYYYY.MM.DD.HHMMSS` and pushes; the release workflow builds the
+   manifest with every `<code>.mlmodelc/*` file and `<code>.bpevocab` as assets).
+6. On a device: update the pack in Clink and check that predictions change (e.g. after "hai să",
+   "mi-e dor de"). If the neural model does not seem to load, the missing manifest `neural` block is
+   the first suspect (see the 00:10 entry for the two ways to add it).

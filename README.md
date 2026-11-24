@@ -3,8 +3,10 @@
 A larger, register-balanced Romanian dictionary and next-word model for the Clink iOS keyboard,
 aimed at people who type Romanian and English together (Combined mode with Bilingual Guard).
 
-**Status:** Phase 1 (dictionary + next-word model) released. Not yet checked on a device; a neural
-next-word model (Phase 2) is in progress.
+**Status:** Phase 1 (dictionary + next-word model) released. Phase 2 (branch `neural`): a neural
+next-word model, trained and evaluated (it beats Phase 1 on every held-out set, see
+**`EVAL-phase2.md`**); it ships after one macOS compile step (`.github/workflows/compile-neural.yml`
+→ `tools/install-neural.sh`). Not yet checked on a device.
 
 ## Install in Clink
 
@@ -22,13 +24,14 @@ next-word model (Phase 2) is in progress.
 | `ro.clex` | 2,150,727 B | 150,000-word dictionary, built by the official `build-pack.py` from `source/ro.txt` | CC BY-SA 4.0 |
 | `ro.cngm` | 2,738,604 B | next-word model, 304,288 pairs for 100,156 previous words (CNGM v1, official format) | CC BY-SA 4.0 |
 | `ro.emoji.json` | 325,321 B | official Clink Romanian emoji metadata, copied unchanged | Clink Community Assets License 1.0 |
+| `ro.mlmodelc/` + `ro.bpevocab` | ≈ 2.4 MB + 241,855 B | neural next-word model (official Clink architecture, int8) and its BPE vocabulary; compiled on macOS from `neural/ro.mlpackage` and installed by `tools/install-neural.sh` (not in `Lexicons/` until then) | CC BY-SA 4.0 |
 
 `python3 vendor/tools/validate-pack.py ro` → `ro: looks ready for release.`
 SHA-256: `ro.clex` 4d08a8b1…4c4121, `ro.cngm` 9cc0af4b…28ca9be, `ro.emoji.json` 03b8b9cf…8878cb6
 (identical to the official file), `source/ro.txt` 18b9a8ad…44c69.
-See `Lexicons/LICENSE` for attribution. No neural model (`.mlmodelc` + `.bpevocab`): training
-needs macOS/Core ML tools; the official pack's neural model belongs with its own vocabulary and is
-not mixed in.
+See `Lexicons/LICENSE` for attribution. The neural model is our own (trained here with the official
+trainer's model, tokenizer and Core ML conversion); the official pack's neural model belongs with its
+own vocabulary and is not mixed in. `ro_ro`, `mo` and `rup` get identical copies of every file.
 
 ## Results in one paragraph
 
@@ -42,6 +45,13 @@ wrong changes and no change for English; next-word top-3 24.7-26.4% vs 12.8-21.3
 discussions and Common Voice. On Tatoeba both baselines trained on the test sentences; against a
 decontaminated rebuild of the published model Romanian Pro is level (26.2% vs 25.6%). Full tables
 with 95% confidence intervals: **`EVAL.md`**.
+
+Phase 2, same next-word protocol and held-out sets: the neural model raises top-3 from 26.4% to
+35.3% on Wikipedia discussions, 26.2% → 31.8% on Tatoeba, 26.2% → 32.8% on Common Voice and
+24.7% → 27.0% on Wikipedia articles; combined with the Phase 1 next-word model (interpolation chosen
+on dev) 35.8 / 32.8 / 33.5 / 29.2%, and 53.2-62.0% after the first letter (Phase 1: 47.5-53.5%). Every
+difference is beyond its 95% interval; int8 quantization costs nothing measurable.
+**`EVAL-phase2.md`**.
 
 ## How it is built
 
@@ -70,11 +80,24 @@ attribution; `LOG.md` records each decision with its numbers.
    self-reference). All settings tuned on dev. Serialised by the code path that reproduces the
    official `build-next-word.py` output byte for byte.
 5. **Validate** with the official `vendor/tools/validate-pack.py`.
+6. **Neural model** (Phase 2, `tools/neural/build_neural.sh`, log in `LOG-phase2.md`): the same
+   training split, filtered for the neural model (2.72M sentences, 47.0M words; diacritic-less text,
+   numbers/markup fragments, foreign scripts and templated stubs removed), weighted toward
+   conversation (discussions ×3, Tatoeba ×20 per epoch, Wikipedia ×0.5), Phase 1's artifact demotion as
+   a loss weight; official `GRULM` (2.28M parameters, 12,036-token BPE learned with the official
+   algorithm) trained on CPU for 145M targets; exported with the official Core ML conversion
+   (`neural/ro.mlpackage`, int8). Compiled on a GitHub macOS runner and checked against PyTorch
+   reference outputs (`neural/fixtures.json`) before installation.
 
 ## Known limitations / Phase 2 candidates
 
 - Templated Wikipedia stubs still bias a few predictions (`o → comună, suprafață`).
 - `sa ca fata pana ma` are kept as typed (standing rule), so plain typing never restores
   să/că/fată/până/mă from the dictionary alone; context (Bilingual Guard / next-word) must do it.
-- No `CBOS` sentence-start section (semantics in the app undocumented) and no neural model.
+- No `CBOS` sentence-start section (semantics in the app undocumented).
+- Neural model: like the official one it ignores hyphenated words (s-a, într-o, nu-mi) in its
+  context and cannot suggest them (the `.cngm` can); how Clink combines it with the `.cngm` is not
+  public, so `EVAL-phase2.md` reports both alone and an interpolation. The release manifest has no
+  `neural` metadata block because the 348 MB training-sentence file is not committed
+  (`source/ro_neural-corpus.json` describes it), as for the official `ro` pack.
 - Proper nouns are ~27% of the list (lower-cased); OpenSubtitles contributes English names.

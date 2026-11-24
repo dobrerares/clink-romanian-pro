@@ -1,0 +1,86 @@
+{
+ "checkpoint": "work/neural/runs/final/final.pt",
+ "checkpoint_sha256": "104e2008ab4d4b1adbf17aeefbfd10884506fa1f65da68c00b5d94c570566857",
+ "checkpoint_state": {
+  "step": 80000,
+  "epoch": 1,
+  "epoch_step": 39834,
+  "seconds": 20470.640449762344,
+  "targets": 144981296
+ },
+ "architecture": {
+  "dim": 128,
+  "hidden": 256,
+  "layers": 2,
+  "window": 12,
+  "V": 12036,
+  "parameters": 2276612
+ },
+ "io": {
+  "input": "tokens Int32 [1, T], T in 1..12 (RangeDim)",
+  "output": "logProbs FLOAT16 [1, 12036]"
+ },
+ "quantization": "linear_symmetric int8 weights (official OpLinearQuantizerConfig)",
+ "quantized_constexpr_ops": 14,
+ "op_histogram": {
+  "add": 12,
+  "cast": 14,
+  "concat": 5,
+  "const": 109,
+  "constexpr_affine_dequantize": 14,
+  "expand_dims": 2,
+  "fill": 2,
+  "gather": 5,
+  "greater_equal": 2,
+  "less": 2,
+  "linear": 14,
+  "log": 1,
+  "mul": 6,
+  "scatter": 2,
+  "select": 2,
+  "shape": 2,
+  "sigmoid": 4,
+  "slice_by_index": 7,
+  "softmax": 1,
+  "squeeze": 4,
+  "sub": 2,
+  "tanh": 2,
+  "transpose": 1,
+  "while_loop": 2
+ },
+ "int8_simulation_check": {
+  "tensor": "emb.weight",
+  "max_abs_diff": 0.0
+ },
+ "fixtures": 49,
+ "fixture_top1_fp32_vs_int8sim": 0.9795918367346939,
+ "mlpackage_bytes": 2377274,
+ "coremltools": "9.0",
+ "torch": "2.7.0+cpu",
+ "trainer_sha256": "19ae4eb48f3fc1f9b7966a5bcd22b1ea157e6e52d16a240c9bbc3d769d53ce8a",
+ "compiled": false,
+ "compile_note": "xcrun coremlcompiler is macOS-only; run .github/workflows/compile-neural.yml",
+ "seconds": 2.9,
+ "files": {
+  "fixtures.json": {
+   "bytes": 65519,
+   "sha256": "c0ac7e4fd83acb4377a3eadd218cd6ff1846a2953fabd478713542a02b01cbee"
+  },
+  "ro.bpevocab": {
+   "bytes": 241855,
+   "sha256": "ea1bc387a9625651e801cd2e2ef43b87be668289baa06bdb85943e0d698d5056"
+  },
+  "ro.mlpackage/Data/com.apple.CoreML/model.mlmodel": {
+   "bytes": 37833,
+   "sha256": "ae90a2a53b821cfb937d0737006d7b8afec7fcbbbeb40016aedf817b02087400"
+  },
+  "ro.mlpackage/Data/com.apple.CoreML/weights/weight.bin": {
+   "bytes": 2338824,
+   "sha256": "5221ca12b07ad93a2b9bcbe63b55f2a22b89a8a7f77a4126d812aa6130585ed5"
+  },
+  "ro.mlpackage/Manifest.json": {
+   "bytes": 617,
+   "sha256": "4fca4e424415f3f821229b26ea4205ea7b5132bdd782335475dc56527de90983"
+  }
+ }
+}
